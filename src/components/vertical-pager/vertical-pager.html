@@ -1,6 +1,5 @@
 <div id="fullpage">
-    <info-page>Some section</info-page>
-    <info-page>Some section</info-page>
-    <info-page>Some section</info-page>
-    <info-page>Some section</info-page>
+    <info-page @footerTouched="nextSection" :backgroundColor="{background: 'linear-gradient(#b2ff59, #ef6c00)'}"></info-page>
+    <info-page @footerTouched="nextSection" :backgroundColor="{background: 'linear-gradient(#ef6c00, #ffee58)'}"></info-page>
+    <info-page @footerTouched="nextSection" :backgroundColor="{background: 'linear-gradient(#ffee58, #bcaaa4)'}" :shouldShowFooter=false></info-page>
 </div>

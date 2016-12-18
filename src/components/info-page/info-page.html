@@ -1,16 +1,19 @@
 <div class="section">
-    <div class="background">
+    <div class="background" :style="backgroundColor">
         
     </div>
     <div class="info-container">
+        <header style="position: absolute">
+            <img :src="logoURL" class="logo" style="float: right" />
+        </header>
         <section class="full-width info-list">
             <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
+                <li>1One一</li>
+                <li>2Two二</li>
+                <li>3Three三</li>
             </ul>
         </section>
-        <footer>
+        <footer @click.stop="onTouchFooter" v-if="shouldShowFooter">
             <img :src="arrowIconURL" class="animated infinite bounce down-arrow" />
         </footer>
     </div>

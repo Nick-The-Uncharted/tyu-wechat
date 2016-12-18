@@ -1,16 +1,18 @@
 import Vue = require('Vue')
 import Component from 'vue-class-component'
 import VerticalPager from './components/vertical-pager'
+import BindPage from './components/bind-page'
 
 var logo = require("./assets/logo.png");
 
+// <vertical-pager></vertical-pager>
 @Component({
   template: `
     <div id="app">
-      <vertical-pager></vertical-pager>
+      <bind-page :backgroundColor="{background: 'linear-gradient(#b2ff59, #ef6c00)'}"></bind-page>
     </div>
    `,
-   components: {VerticalPager}
+   components: {BindPage}
 })
 export default class App extends Vue {
 }

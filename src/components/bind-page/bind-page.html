@@ -1,0 +1,28 @@
+<div>
+    <div class="background" :style="backgroundColor">
+        
+    </div>
+    <div class="info-container">
+        <header>
+            <img :src="logoURL" class="logo" style="float: right" />
+        </header>
+        <section class="full-width">
+            <form class="input-form">
+                <div id="phone-field" class="input-field custom">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="phone-input" type="tel" class="validate">
+                    <label for="phone-input">手机号</label>
+                </div>
+                <div id="authcode-group" class="input-field custom">
+                    <div id="authcode-input-group">
+                        <i class="material-icons prefix">message</i>
+                        <input id="authcode-input" type="text" class="validate">
+                        <label for="authcode-input">验证码</label>
+                    </div>
+                    <a id="authcode-button" class="waves-effect waves-light btn">发送验证码</a>
+                </div>
+                <a id="submit-button" @click="submitButtonTouched" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">确认</i></a>
+            </form>
+        </section>
+    </div>
+</div>

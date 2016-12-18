@@ -12,11 +12,13 @@ import 'fullpage.js/dist/jquery.fullpage.css'
 @Component({
     template: template,
     components: {
-        'info-page': InfoPage
+        'info-page': InfoPage,      
     }
 })
 export default class VerticalPager extends Vue {
-    
+    nextSection() {
+        $.fn.fullpage.moveSectionDown();
+    }
 }
 
 $(document).ready(function() {
