@@ -29,7 +29,7 @@
     width: 100%;
 }
 
-.input-form .input-field {
+.input-form :global(.input-field) {
     align-self: center;
     width: 80%;
 }
@@ -120,7 +120,7 @@ header {
   src: local('Material Icons'), local('MaterialIcons-Regular'), url('../../assets/material-font.woff2') format('woff2');
 }
 
-.material-icons {
+:global(.material-icons) {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;

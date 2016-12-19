@@ -5,6 +5,9 @@ import VerticalPager from './components/vertical-pager'
 import BindPage from './components/bind-page'
 import VueRouter = require('vue-router')
 
+// 防止toast的css冲突....
+import '!!vue-style!css?sourceMap!replace?regex=toast&flags=g&sub=material-toast!materialize-css/bin/materialize.css'
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({ 

@@ -2,13 +2,12 @@ import Vue = require('Vue')
 import Component from 'vue-class-component'
 const template: string = require('raw!./info-page.html')
 
-import 'animate.css/animate.css'
+import '!!vue-style!css!animate.css/animate.css'
 import 'fullpage.js/dist/jquery.fullpage.css'
 
 const arrowIconURL = require('../../assets/Arrow.png')
 const logoURL = require('../../assets/logo.png')
-import './info-page.css'
-
+const map = require('./info-page.css')
 
 @Component({
     template: template,
@@ -23,6 +22,7 @@ import './info-page.css'
 export default class InfoPage extends Vue {
     arrowIconURL = arrowIconURL
     logoURL = logoURL
+    m = map
     onTouchFooter(event) {
         this.$emit('footerTouched')
     }

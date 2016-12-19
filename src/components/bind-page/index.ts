@@ -4,14 +4,13 @@ const template: string = require('raw!./bind-page.html')
 
 const logoURL = require('../../assets/logo.png')
 
-// 防止toast的css冲突....
-import '!!vue-style!css?sourceMap!replace?regex=toast&flags=g&sub=material-toast!materialize-css/bin/materialize.css'
 import 'materialize-css/bin/materialize.js'
-import './bind-page.css'
+const map = require('./bind-page.css')
 
 import $ = require('jquery')
 import toastr = require('toastr')
-import 'toastr/build/toastr.css'
+//不启用css module
+import '!!vue-style!css!toastr/build/toastr.css'
 
 @Component({
     template: template,
@@ -24,9 +23,11 @@ import 'toastr/build/toastr.css'
 })
 export default class BindPage extends Vue {
     logoURL = logoURL
+    m = map
 
     submitButtonTouched(event) {
         toastr.options.positionClass = 'toast-bottom-center'
+        toastr.options.timeOut = 5000000
         toastr.error('不好意思出错了')
     }
 }
