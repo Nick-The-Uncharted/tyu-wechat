@@ -22,7 +22,7 @@ header {
     padding-right: 5vw;
 }
 
-footer {
+footer.custom {
     padding: 1vh;
     display: flex;
     justify-content: center;
@@ -51,6 +51,10 @@ footer {
 
 .full-width {
     width: 100%
+}
+
+.no-padding {
+    padding: 0
 }
 
 .info-list {

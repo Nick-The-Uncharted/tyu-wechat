@@ -1,4 +1,4 @@
-<div class="section">
+<div class="section no-padding">
     <div class="background" :style="backgroundColor">
         
     </div>
@@ -13,7 +13,7 @@
                 <li>3Three三</li>
             </ul>
         </section>
-        <footer @click.stop="onTouchFooter" v-if="shouldShowFooter">
+        <footer @click.stop="onTouchFooter" v-if="shouldShowFooter" class="custom">
             <img :src="arrowIconURL" class="animated infinite bounce down-arrow" />
         </footer>
     </div>

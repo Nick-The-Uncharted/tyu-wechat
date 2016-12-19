@@ -1,5 +1,3 @@
-/// <reference path="../../../snakebarjs.d.ts" />
-
 import Vue = require('Vue')
 import Component from 'vue-class-component'
 const template: string = require('raw!./bind-page.html')
@@ -18,14 +16,17 @@ import 'toastr/build/toastr.css'
 @Component({
     template: template,
     props: {
-        'backgroundColor': Object
+        'backgroundColorStyle': {
+            type: Object,
+            default: () => {return {background: 'linear-gradient(#b2ff59, #ef6c00)'}}
+        }
     }
 })
 export default class BindPage extends Vue {
     logoURL = logoURL
 
     submitButtonTouched(event) {
-        toastr.options.positionClass = 'toast-bottom-full-width'
+        toastr.options.positionClass = 'toast-bottom-center'
         toastr.error('不好意思出错了')
     }
 }
