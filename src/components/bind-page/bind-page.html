@@ -10,18 +10,18 @@
             <form :class="m['input-form']">
                 <div id="phone-field" class="input-field" :class="[m['custom']]">
                     <i class="material-icons prefix">phone</i>
-                    <input id="phone-input" type="tel" class="validate">
+                    <input id="phone-input" type="tel" class="validate" v-model="phoneNumber">
                     <label for="phone-input">手机号</label>
                 </div>
-                <div :id="m['authcode-group']" class="input-field" :class="m['custom']">
-                    <div :id="m['authcode-input-group']">
+                <div class="input-field" :class="[m['custom'], m['smsCode-group']]">
+                    <div :class="m['smsCode-input-group']">
                         <i class="material-icons prefix">message</i>
-                        <input id="'authcode-input" type="text" class="validate">
-                        <label for="authcode-input">验证码</label>
+                        <input id="'smsCode-input" type="text" class="validate" v-model="smsCode">
+                        <label for="smsCode-input">验证码</label>
                     </div>
-                    <a id="m['authcode-button']" class="waves-effect waves-light btn">发送验证码</a>
+                    <a :class="m['smsCode-button']" @click="sendSmsCodeButtonTouched" class="waves-effect waves-light btn">发送验证码</a>
                 </div>
-                <a :id="m['submit-button']" @click="submitButtonTouched" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">确认</i></a>
+                <a :class="m['submit-button']" @click="submitButtonTouched" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">确认</i></a>
             </form>
         </section>
     </div>

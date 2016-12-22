@@ -9,6 +9,10 @@ const arrowIconURL = require('../../assets/Arrow.png')
 const logoURL = require('../../assets/logo.png')
 const map = require('./info-page.css')
 
+function secureURLWithUserId(userId: string) {
+    window.history.pushState("", "Title", `#/user/${userId}`);
+}
+
 @Component({
     template: template,
     props: {

@@ -34,30 +34,33 @@
     width: 80%;
 }
 
-#authcode-group {
+.smsCode-group {
     display: flex;
 }
 
-#authcode-input-group {
+.smsCode-input-group {
     flex: 1
 }
 
-#authcode-button {
+.smsCode-group .smsCode-button {
     margin-left: 2vw;
     font-size: 0.8em;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
 
-#submit-button {
+.input-form .submit-button {
     width: 15vh;
     height: 15vh;
     display: flex;
     justify-content: center;
     align-items: center;
     align-self: center;
-    font-size: 0.8em;
     margin-top: 20vh;
+}
+
+.submit-button i {
+    font-size: 1.2em;
 }
 
 header {

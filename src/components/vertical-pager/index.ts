@@ -5,8 +5,8 @@ import Component from 'vue-class-component'
 const template: string = require('raw!./vertical-pager.html')
 import InfoPage from '../info-page'
 
-import 'fullpage.js'
 import $ = require('jquery')
+import 'fullpage.js'
 // 不启用css module
 import '!!vue-style!css!fullpage.js/dist/jquery.fullpage.css'
 

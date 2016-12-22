@@ -22,7 +22,8 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
   stats: {
     colors: true,
     chunks: true
-  }
+  },
+  headers: { "Access-Control-Allow-Origin": "*" }
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler)
