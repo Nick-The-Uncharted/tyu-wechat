@@ -10,8 +10,8 @@
             <form :class="m['input-form']">
                 <div id="phone-field" class="input-field" :class="[m['custom']]">
                     <i class="material-icons prefix">phone</i>
-                    <input id="phone-input" type="tel" class="validate" v-model="phoneNumber">
-                    <label for="phone-input">手机号</label>
+                    <input id="phone-input" title="手机号" type="tel" autocomplete="tel" pattern="\d{11}" class="validate" v-model="phoneNumber">
+                    <label for="phone-input" data-error="手机格式错误">手机号</label>
                 </div>
                 <div class="input-field" :class="[m['custom'], m['smsCode-group']]">
                     <div :class="m['smsCode-input-group']">
@@ -19,7 +19,7 @@
                         <input id="'smsCode-input" type="text" class="validate" v-model="smsCode">
                         <label for="smsCode-input">验证码</label>
                     </div>
-                    <a :class="m['smsCode-button']" @click="sendSmsCodeButtonTouched" class="waves-effect waves-light btn">发送验证码</a>
+                    <a id="smsCode-button" :class="m['smsCode-button']" @click="sendSmsCodeButtonTouched" class="waves-effect waves-light btn">{{smsButtonText}}</a>
                 </div>
                 <a :class="m['submit-button']" @click="submitButtonTouched" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">确认</i></a>
             </form>
