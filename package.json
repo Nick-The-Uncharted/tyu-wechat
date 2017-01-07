@@ -54,13 +54,13 @@
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.3",
     "webpack-hot-middleware": "^2.12.2",
-    "webpack-merge": "^0.14.1"
-  },
-  "devDependencies": {
+    "webpack-merge": "^0.14.1",
     "@types/fullpage.js": "^2.8.5",
     "@types/jquery": "^2.0.34",
     "@types/materialize-css": "^0.97.33",
     "@types/toastr": "^2.1.32"
+  },
+  "devDependencies": {
   },
   "engines": {
     "node": ">= 4.0.0",
