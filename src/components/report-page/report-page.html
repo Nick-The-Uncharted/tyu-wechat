@@ -1,0 +1,22 @@
+<div class="section no-padding">
+    <div :class="m['background']" :style="backgroundColor">
+        
+    </div>
+    <div :class="m['report-container']">
+        <header style="position: absolute">
+            <img :src="logoURL" :class="m['logo']" style="float: right" />
+        </header>
+        <section :class="[m['full-width'], m['report-list']]">
+            <ul>
+                <li :class="[m['radarChartLi']]">
+                    <canvas id="radarChart"></canvas>
+                </li>
+                <li>2Two二</li>
+                <li>3Three三</li>
+            </ul>
+        </section>
+        <footer @click.stop="onTouchFooter" v-if="shouldShowFooter" :class="[m['custom']]">
+            <img :src="arrowIconURL" :class="m['down-arrow']" class="animated infinite bounce"/>
+        </footer>
+    </div>
+</div>

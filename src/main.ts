@@ -11,7 +11,7 @@ import './style.css'
 
 Vue.use(VueRouter)
 
-const router = new VueRouter({ 
+let router = new VueRouter({ 
   // mode: 'history',
   routes: [
     {
@@ -24,6 +24,10 @@ const router = new VueRouter({
     }]
 })
 
-const app = new Vue({
+let app = new Vue({
   router
 }).$mount("#app")
+
+if (module.hot) {
+    
+}

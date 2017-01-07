@@ -1,0 +1,87 @@
+:root {
+    font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    color: #546e7a
+}
+
+ul {
+    max-width: 80vw;
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column
+}
+
+.radarChartLi {
+    padding: 10px;
+    max-width: 300px;
+    align-self: center
+}
+
+li {
+    border-radius: 5px;
+    background-color: #fff3e0;
+    list-style-type: none;
+    padding: 2vh;
+    margin-bottom: 3vh;
+}
+
+canvas {
+    max-height: 50vh;
+    left: 50%;
+    margin-right: -50%;
+}
+
+header {
+    width: 100%;
+    padding-top: 2vh;
+    padding-right: 5vw;
+}
+
+footer.custom {
+    padding: 1vh;
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+
+.background {
+    position: fixed;
+    background: linear-gradient(#b2ff59, #ef6c00 );
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    display: block;
+    /*filter: blur(8px)*/
+}
+
+.report-container {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+    z-index: 1;
+}
+
+.full-width {
+    width: 100%
+}
+
+.no-padding {
+    padding: 0
+}
+
+.report-list {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+}
+
+.down-arrow {
+    height: 10vh
+}
+
+.logo {
+    height: 5vh
+}
