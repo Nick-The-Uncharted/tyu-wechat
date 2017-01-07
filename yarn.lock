@@ -19,17 +19,42 @@
     "@types/jquery" "*"
     "@types/pickadate" "*"
 
+"@types/node@^6.0.58":
+  version "6.0.58"
+  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-6.0.58.tgz#7b3b7065f3cdf24e2349d35b68d2795cfa874553"
+
 "@types/pickadate@*":
   version "3.5.28"
   resolved "http://registry.npm.taobao.org/@types/pickadate/download/@types/pickadate-3.5.28.tgz#f64fcef5f7cc95fe29b6572f1585a0b501a96738"
   dependencies:
     "@types/jquery" "*"
 
+"@types/source-map@*":
+  version "0.5.0"
+  resolved "http://registry.npm.taobao.org/@types/source-map/download/@types/source-map-0.5.0.tgz#dd34bbd8e32fe4e74f2e3d8ac07f8aa5b45a47ac"
+
+"@types/tapable@*":
+  version "0.2.3"
+  resolved "http://registry.npm.taobao.org/@types/tapable/download/@types/tapable-0.2.3.tgz#0888b0f20cc7e58e1c22a1888b4e963eefaa810a"
+
 "@types/toastr@^2.1.32":
   version "2.1.32"
   resolved "http://registry.npm.taobao.org/@types/toastr/download/@types/toastr-2.1.32.tgz#7971a88fb48b48ef3b00057899eaa06b3b87d3e6"
   dependencies:
     "@types/jquery" "*"
+
+"@types/uglify-js@*":
+  version "2.6.28"
+  resolved "http://registry.npm.taobao.org/@types/uglify-js/download/@types/uglify-js-2.6.28.tgz#1499b48ca3a44132250b318cdde25b8f45f0c616"
+  dependencies:
+    "@types/source-map" "*"
+
+"@types/webpack@^2.1.0":
+  version "2.1.0"
+  resolved "http://registry.npm.taobao.org/@types/webpack/download/@types/webpack-2.1.0.tgz#b94c93d139af80a1766ead206a7a20945ecec689"
+  dependencies:
+    "@types/tapable" "*"
+    "@types/uglify-js" "*"
 
 abbrev@1:
   version "1.0.9"
