@@ -1,5 +1,6 @@
 @import "../info-page/info-page.css";
-.report-container {
+
+.summary-container {
     justify-content: space-between;
     display: flex;
     flex-direction: column;
@@ -9,7 +10,7 @@
     z-index: 1;
 }
 
-.report-list {
+.summary-list {
     margin-top: 10vh;
     display: flex;
     justify-content: center;

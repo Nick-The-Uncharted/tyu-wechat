@@ -8,11 +8,18 @@
         </header>
         <section :class="[m['full-width'], m['info-list']]">
             <ul>
-                <li>1One一</li>
-                <li>2Two二</li>
-                <li>3Three三</li>
+                <li>姓名: xxx</li>
+                <li>性别：男</li>
+                <li :class="[m['radarChartLi']]">
+                    <canvas id="radarChart"  @click="onChartClick"></canvas>
+                </li>
+                  <!-- Modal Structure -->
+                <div id="modal1" class="modal">
+                    <evaluate-standard-table />
+                </div>
             </ul>
         </section>
+
         <footer @click.stop="onTouchFooter" v-if="shouldShowFooter" :class="[m['custom']]">
             <img :src="arrowIconURL" :class="m['down-arrow']" class="animated infinite bounce"/>
         </footer>

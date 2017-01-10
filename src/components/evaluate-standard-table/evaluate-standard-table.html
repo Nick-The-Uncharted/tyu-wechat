@@ -1,0 +1,33 @@
+<table>
+    <thead>
+        <tr>
+            <th colspan="6">test</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                商数
+            </td>
+            <td v-for="score in scores">
+                {{score}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                百分位
+            </td>
+            <td v-for="percent in percents">
+                {{percent}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                类别
+            </td>
+            <td v-for="type in types">
+                {{type}}
+            </td>
+        </tr>
+    </tbody>
+</table>

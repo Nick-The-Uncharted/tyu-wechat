@@ -1,13 +1,15 @@
 import Vue = require('Vue')
 import Component from 'vue-class-component'
-const template: string = require('raw!./info-page.html')
+const template: string = require('raw!./logo-page.html')
 
 import '!!vue-style!css!animate.css/animate.css'
 import 'fullpage.js/dist/jquery.fullpage.css'
 
 const arrowIconURL = require('../../assets/Arrow.png')
 const logoURL = require('../../assets/logo.png')
-const map = require('./info-page.css')
+const QRCodeURL = require('../../assets/QRCode.png')
+const map = require('./logo-page.css')
+const infoMap = require('../info-page/info-page.css')
 
 import EvaluateStandardTable from '../evaluate-standard-table'
 import Chart = require('chart.js')
@@ -29,10 +31,12 @@ function secureURLWithUserId(userId: string) {
         'evaluate-standard-table': EvaluateStandardTable,   
     }
 })
-export default class InfoPage extends Vue {
+export default class LogoPage extends Vue {
     arrowIconURL = arrowIconURL
     logoURL = logoURL
-    m = map
+    QRCodeURL = QRCodeURL
+    m = Object.assign({}, infoMap, map)
+
 
     onChartClick() {
         $('#fullpage').addClass('none-transform');

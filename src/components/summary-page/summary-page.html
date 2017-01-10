@@ -1,0 +1,35 @@
+<div class="section no-padding">
+    <div :class="m['background']" :style="backgroundColor">
+        
+    </div>
+    <div :class="m['summary-container']">
+        <header style="position: absolute">
+            <img :src="logoURL" :class="m['logo']" style="float: right" />
+        </header>
+        <section :class="[m['full-width'], m['summary-list']]">
+            <ul>
+                <li :class="[m['radarChartLi']]">
+                    <canvas id="summaryChart"></canvas>
+                </li>
+                <li>
+                    <h6>低纬度分数:</h6>
+                    <table>
+                        <thead>
+                            <th>维度</th>
+                            <th>项目</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>平衡</td>
+                                <td>a、b、c</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+        </section>
+        <footer @click.stop="onTouchFooter" v-if="shouldShowFooter" :class="[m['custom']]">
+            <img :src="arrowIconURL" :class="m['down-arrow']" class="animated infinite bounce"/>
+        </footer>
+    </div>
+</div>

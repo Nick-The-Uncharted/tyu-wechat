@@ -9,6 +9,7 @@ var env = process.env.NODE_ENV
 var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
 var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
+var webpack = require("webpack");
 
 module.exports = {
   entry: {
@@ -74,5 +75,11 @@ module.exports = {
         browsers: ['last 2 versions']
       })
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+              $: "jquery",
+              jQuery: "jquery"
+      })
+  ]
 }

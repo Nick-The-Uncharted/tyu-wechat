@@ -1,7 +1,6 @@
 import Vue = require('Vue')
 import Component from 'vue-class-component'
 
-import $ = require('jquery')
 import toastr = require('toastr')
 //不启用css module
 import '!!vue-style!css!toastr/build/toastr.css'

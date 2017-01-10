@@ -1,10 +1,8 @@
-import $ = require('jquery')
 
-declare global {
-    interface JQuery {
-        animateCss: (name: string) => void
-    }
+interface JQuery {
+    animateCss: (name: string) => void
 }
+
 
 $.fn.extend({
     animateCss: function (animationName) {
