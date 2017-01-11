@@ -8,12 +8,12 @@
         </header>
         <section :class="m['full-width']">
             <form :class="m['input-form']">
-                <div id="phone-field" class="input-field" :class="[m['custom']]">
+                <div id="phone-field" class="input-field custom">
                     <i class="material-icons prefix">phone</i>
                     <input id="phone-input" title="手机号" type="tel" autocomplete="tel" pattern="\d{11}" class="validate" v-model="phoneNumber">
                     <label for="phone-input" data-error="手机格式错误">手机号</label>
                 </div>
-                <div class="input-field" :class="[m['custom'], m['smsCode-group']]">
+                <div class="input-field custom" :class="[m['smsCode-group']]">
                     <div :class="m['smsCode-input-group']">
                         <i class="material-icons prefix">message</i>
                         <input id="'smsCode-input" type="text" class="validate" v-model="smsCode">

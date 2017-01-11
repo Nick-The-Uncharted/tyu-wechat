@@ -36,11 +36,11 @@ export default class InfoPage extends Vue {
 
     onChartClick() {
         $('#fullpage').addClass('none-transform');
-        ($('.modal') as any).modal('open');
+        ($('#standard-table-modal') as any).modal('open');
     }
 
     async mounted() {
-        ($('.modal') as any).modal({
+        ($('#standard-table-modal') as any).modal({
             complete: () => {
                 $('#fullpage').removeClass('none-transform')
             }
@@ -51,7 +51,7 @@ export default class InfoPage extends Vue {
         try {
             userInfo = await InfoModel.getChildInfo((this as any).childId)
         } catch (error) {
-
+            console.log(error)
         }
         this.name = userInfo.name
         this.gender = userInfo.gender

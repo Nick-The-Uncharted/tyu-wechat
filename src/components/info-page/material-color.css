@@ -1,0 +1,107 @@
+/* label*/
+:global .input-field.custom input + label {
+    color: var(--input-normal-color)
+}
+
+:global .input-field.custom input.valid + label {
+    color: var(--input-focus-color)
+}
+
+:global .input-field.custom input:focus + label {
+    color: var(--input-focus-color)
+}
+
+/* label underline focus color */
+:global .input-field.custom input {
+    border-bottom: 1px solid var(--input-normal-color);
+    box-shadow: 0 1px 0 0 var(--input-normal-color);
+}
+
+:global .input-field.custom input.valid {
+    border-bottom: 1px solid var(--input-focus-color);
+    box-shadow: 0 1px 0 0 var(--input-focus-color);
+}
+
+:global .input-field.custom input:focus {
+    border-bottom: 1px solid var(--input-focus-color);
+    box-shadow: 0 1px 0 0 var(--input-focus-color);
+}
+
+/* icon prefix focus color */
+:global .input-field.custom .prefix {
+    color: var(--input-normal-color);
+}
+
+:global .input-field.custom .prefix.active {
+    color: var(--input-focus-color);
+}
+
+/*material font*/
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url('../../assets/material-font.woff2') format('woff2');
+}
+
+/* label*/
+:global(.input-field) input + label {
+    color: var(--input-normal-color)
+}
+
+:global(.input-field) input.valid + label {
+    color: var(--input-focus-color)
+}
+
+:global(.input-field) input:focus + label {
+    color: var(--input-focus-color)
+}
+
+/* label underline focus color */
+:global(.input-field).custom input {
+    border-bottom: 1px solid var(--input-normal-color);
+    box-shadow: 0 1px 0 0 var(--input-normal-color);
+}
+
+:global(.input-field).custom input.valid {
+    border-bottom: 1px solid var(--input-focus-color);
+    box-shadow: 0 1px 0 0 var(--input-focus-color);
+}
+
+:global(.input-field).custom input:focus {
+    border-bottom: 1px solid var(--input-focus-color);
+    box-shadow: 0 1px 0 0 var(--input-focus-color);
+}
+
+/* icon prefix focus color */
+:global(.input-field).custom .prefix {
+    color: var(--input-normal-color);
+}
+
+:global(.input-field).custom .prefix.active {
+    color: var(--input-focus-color);
+}
+
+/*material font*/
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url('../../assets/material-font.woff2') format('woff2');
+}
+
+:global(.material-icons) {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}

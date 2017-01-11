@@ -6,6 +6,7 @@ import 'materialize-css/dist/js/materialize.js'
 import Vue = require('vue')
 import VerticalPager from './components/vertical-pager'
 import BindPage from './components/bind-page'
+import DashBoard from './components/dash-board'
 import VueRouter = require('vue-router')
 import './style.css'
 
@@ -24,7 +25,7 @@ let router = new VueRouter({
     },
     { 
       path: '*',
-      component: VerticalPager // fallback 
+      component: DashBoard // fallback 
     }]
 })
 

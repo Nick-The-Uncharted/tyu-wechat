@@ -1,6 +1,6 @@
 :root {
     --input-focus-color: #1565c0;
-    --input-normal-color: #37474f;
+    --input-normal-color:#37474f;
 }
 
 .background {
@@ -13,9 +13,9 @@
 }
 
 .info-container {
+    justify-content: flex-start;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     height: 100vh;
     padding: 0;
@@ -25,24 +25,26 @@
 .input-form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
+    align-items: center
 }
 
-.input-form :global(.input-field) {
-    align-self: center;
+.input-form ul {
     width: 80%;
 }
 
-.smsCode-group {
+.name-input-group {
+    flex: 1;
     display: flex;
+    align-items: center
 }
 
-.smsCode-input-group {
+.name-input-group .input-field {
     flex: 1
 }
 
-.smsCode-group .smsCode-button {
+.name-input-group .add-child-button {
     margin-left: 2vw;
     font-size: 0.8em;
     padding-left: 2vw;
@@ -56,7 +58,7 @@
     justify-content: center;
     align-items: center;
     align-self: center;
-    margin-top: 20vh;
+    margin-top: 14vh;
 }
 
 .submit-button i {

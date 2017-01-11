@@ -1,0 +1,39 @@
+<div>
+    <div :class="m['background']" :style="backgroundColorStyle">
+        
+    </div>
+    <div :class="m['info-container']">
+        <header>
+            <img :src="logoURL" :class="m['logo']" style="float: right" />
+        </header>
+        <section :class="m['full-width']">
+            <form :class="m['input-form']">
+                <ul>
+                    <li v-for="bindedChild in bindedChildren">{{bindedChild.name}} ( {{bindedChild.gender}} {{bindedChild.kindergarener}} {{bindedChild.grade}} {{bindedChild.class}} )</li>
+                </ul>
+                <div :class="[m['name-input-group']]">
+                    <div id="phone-field" class="input-field custom">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="phone-input" title="手机号" type="text" v-model="newChildName">
+                        <label for="phone-input">新增孩子姓名</label>
+                    </div>
+                    <a id="add-child-button" @click="addChildButtonTouched" :class="m['add-child-button']" class="waves-effect waves-light btn">确认添加</a>
+                </div>
+            </form>
+            <div id="child-table-modal" class="modal">
+                  <ul class="collection">
+                        <li v-for="newChild in newChildren" class="collection-item" @click="childClicked(newChild)">{{newChild.name}} ( {{newChild.gender}} {{newChild.kindergarener}} {{newChild.grade}} {{newChild.class}} )</li>
+                 </ul>
+            </div>
+
+            <div id="ensure-modal" class="modal">
+                <p>确认添加 {{childToAdd.name}} ( {{childToAdd.gender}} {{childToAdd.kindergarener}} {{childToAdd.grade}} {{childToAdd.class}} ) 吗？</p>
+                 <div class="modal-footer">
+                    <a href="#" @click="ensureAddChildButtonTouched" class=" modal-action modal-close waves-effect waves-green btn-flat">确认</a>
+                    <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">取消</a>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>

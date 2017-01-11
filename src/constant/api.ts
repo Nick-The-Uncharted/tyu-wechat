@@ -1,5 +1,12 @@
-const baseUrl = "https://private-031f53-tyu1.apiary-mock.com"
+const baseUrl = "http://localhost:3000/service"
 export const bindEndpoint = `${baseUrl}/bindPhoneNumber`
+
+export const bindChildrenEndPoint = `${baseUrl}/bindChild`
+
+export const bindedChildrenEndPoint = `${baseUrl}/user/childs`
+
+export const getChildrenByNameEndPoint = `${baseUrl}/childs`
+
 export const childInfoEndPointGetter = (childId) => {
     return `${baseUrl}/childs/${childId}`
 }
