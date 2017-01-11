@@ -11,45 +11,66 @@ const infoMap = require('../info-page/info-page.css')
 const map = require('./report-page.css')
 import Chart = require('chart.js')
 
+import InfoModel from '../../model/InfoModel'
+
 function secureURLWithUserId(userId: string) {
     window.history.pushState("", "Title", `#/user/${userId}`);
+}
+
+const translations = {
+    PhysicalFunction: "身体机能",
+    GM: "粗大",
+    SportsCognition: "运动认知",
+    FM: "精细"
 }
 
 @Component({
     template: template,
     props: {
-        'dataSource': String,
+        'subject': String,
         'backgroundColor': Object ,
         'shouldShowFooter': {
             type: Boolean,
             default: true
-        }
+        },
+        'userId': String,
+        'chartId': String
     }
 })
 export default class ReportPage extends Vue {
     arrowIconURL = arrowIconURL
     logoURL = logoURL
     m = Object.assign({}, infoMap, map)
-    note = "BMI 指数=体重/(身高)2，是目前国际上常用的衡量人体胖瘦程度以及是否健康的一个标准， 根据中国的 BMI 指数标准，最理想的 BMI 指数为 22。"
-    summary = `大宝的身体机能得分是 16(标准分)，BMI 指数 24.5 偏高，轻微超重，有肥胖的风险， 建议控制饮食，尤其是晚上要节制食欲，适当运 动，提高身体机能。大宝的肺活量是 1150 非常优秀，说明有充足 的睡眠，建议继续保持。`
+    // note = "BMI 指数=体重/(身高)2，是目前国际上常用的衡量人体胖瘦程度以及是否健康的一个标准， 根据中国的 BMI 指数标准，最理想的 BMI 指数为 22。"
+    summary = `计算中...`
 
-    mounted() {
+    async mounted() {
+        let testSubject
+        try {
+            testSubject = await InfoModel.getTestSubjectDetail((this as any).childId, (this as any).subject)
+        } catch (error) {
+
+        }
+
         const data = {
-            labels: ["身体机能", "粗大", "精细", "认知描述"],
+            labels: testSubject.list.map((item) => item.name) || [],
             datasets: [
                 {
-                    label: (<any>this).dataSource,
+                    label: translations[(<any>this).subject],
                     backgroundColor: "rgba(255,99,132,0.2)",
                     borderColor: "rgba(255,99,132,1)",
                     pointBackgroundColor: "rgba(255,99,132,1)",
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(255,99,132,1)",
-                    data: [60, 80, 40, 19]
+                    data: testSubject.list.map((item) => item.score) || []
                 }]
         }
 
-        var myBarChart = new Chart($("#horizonBarChart"), {
+
+        this.summary = testSubject.summary
+
+        var myBarChart = new Chart($(`#${(this as any).chartId}`), {
             type: 'horizontalBar',
             data: data,
             options: {

@@ -70,3 +70,12 @@ footer.custom {
 .logo {
     height: 5vh
 }
+
+canvas {
+    max-width: 300px
+}
+
+.ChartLi {
+    display: flex;
+    justify-content: center
+}

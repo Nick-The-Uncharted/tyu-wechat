@@ -19,8 +19,12 @@ let router = new VueRouter({
       component: BindPage
     },
     { 
-      path: '/*',
+      path: '/childs/:id',
       component: VerticalPager 
+    },
+    { 
+      path: '*',
+      component: VerticalPager // fallback 
     }]
 })
 

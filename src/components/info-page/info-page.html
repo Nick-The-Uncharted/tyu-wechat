@@ -8,10 +8,10 @@
         </header>
         <section :class="[m['full-width'], m['info-list']]">
             <ul>
-                <li>姓名: xxx</li>
-                <li>性别：男</li>
-                <li :class="[m['radarChartLi']]">
-                    <canvas id="radarChart"  @click="onChartClick"></canvas>
+                <li>姓名: {{name}}</li>
+                <li>性别: {{gender}}</li>
+                <li :class="[m['ChartLi']]">
+                    <canvas id="overviewChart"  @click="onChartClick"></canvas>
                 </li>
                   <!-- Modal Structure -->
                 <div id="modal1" class="modal">

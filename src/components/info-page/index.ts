@@ -11,10 +11,7 @@ const map = require('./info-page.css')
 
 import EvaluateStandardTable from '../evaluate-standard-table'
 import Chart = require('chart.js')
-
-function secureURLWithUserId(userId: string) {
-    window.history.pushState("", "Title", `#/user/${userId}`);
-}
+import InfoModel from '../../model/InfoModel'
 
 @Component({
     template: template,
@@ -23,7 +20,8 @@ function secureURLWithUserId(userId: string) {
         'shouldShowFooter': {
             type: Boolean,
             default: true
-        }
+        },
+        'userId': String
     },
     components: {
         'evaluate-standard-table': EvaluateStandardTable,   
@@ -33,35 +31,47 @@ export default class InfoPage extends Vue {
     arrowIconURL = arrowIconURL
     logoURL = logoURL
     m = map
+    name = "加载中……"
+    gender = "加载中……"
 
     onChartClick() {
         $('#fullpage').addClass('none-transform');
         ($('.modal') as any).modal('open');
     }
 
-    mounted() {
+    async mounted() {
         ($('.modal') as any).modal({
             complete: () => {
                 $('#fullpage').removeClass('none-transform')
             }
         });
 
+        console.log(1)
+        let userInfo 
+        try {
+            userInfo = await InfoModel.getChildInfo((this as any).childId)
+        } catch (error) {
+
+        }
+        this.name = userInfo.name
+        this.gender = userInfo.gender
+
         Chart.defaults.global.fontSize = 15
         const data = {
             labels: ["身体机能", "粗大", "精细", "认知描述"],
             datasets: [
             {
-                label: "测试报告",
+                label: `动商总分: ${userInfo.MQ}`,
                 backgroundColor: "rgba(255,99,132,0.2)",
                 borderColor: "rgba(255,99,132,1)",
                 pointBackgroundColor: "rgba(255,99,132,1)",
                 pointBorderColor: "#fff",
                 pointHoverBackgroundColor: "#fff",
                 pointHoverBorderColor: "rgba(255,99,132,1)",
-                data: [60, 80, 40, 19]
+                data: userInfo.scores || []
             }]
         }
-        var chartInstance = new Chart($("#radarChart"), {
+        var chartInstance = new Chart($("#overviewChart"), {
             type: 'radar',
             data: data,
             options: {

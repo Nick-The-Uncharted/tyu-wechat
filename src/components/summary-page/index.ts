@@ -10,7 +10,7 @@ const logoURL = require('../../assets/logo.png')
 const map = require('./summary-page.css')
 const infoMap = require('../info-page/info-page.css')
 import Chart = require('chart.js')
-
+import InfoModel from '../../model/InfoModel'
 
 function secureURLWithUserId(userId: string) {
     window.history.pushState("", "Title", `#/user/${userId}`);
@@ -24,7 +24,8 @@ function secureURLWithUserId(userId: string) {
         'shouldShowFooter': {
             type: Boolean,
             default: true
-        }
+        },
+        'userId': String
     }
 })
 export default class SummaryPage extends Vue {
@@ -32,19 +33,28 @@ export default class SummaryPage extends Vue {
     logoURL = logoURL
     m = Object.assign({}, infoMap, map)
 
-    mounted() {
+    async mounted() {
+        let summary
+        try {
+            summary = await InfoModel.getDimensionSummary((this as any).childId)
+        } catch (error) {
+
+        }
+
+        console.log(summary)
+
         const data = {
-            labels: ["身体机能", "粗大", "精细", "认知描述"],
+            labels: summary.map((dimension) => dimension.name),
             datasets: [
                 {
-                    label: (<any>this).dataSource,
+                    label: "维度总结",
                     backgroundColor: "rgba(255,99,132,0.2)",
                     borderColor: "rgba(255,99,132,1)",
                     pointBackgroundColor: "rgba(255,99,132,1)",
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(255,99,132,1)",
-                    data: [60, 80, 40, 19]
+                    data: summary.map((dimension) => dimension.score)
                 }]
         }
 

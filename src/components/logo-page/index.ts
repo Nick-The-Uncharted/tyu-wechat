@@ -49,44 +49,6 @@ export default class LogoPage extends Vue {
                 $('#fullpage').removeClass('none-transform')
             }
         });
-
-        Chart.defaults.global.fontSize = 15
-        const data = {
-            labels: ["身体机能", "粗大", "精细", "认知描述"],
-            datasets: [
-            {
-                label: "测试报告",
-                backgroundColor: "rgba(255,99,132,0.2)",
-                borderColor: "rgba(255,99,132,1)",
-                pointBackgroundColor: "rgba(255,99,132,1)",
-                pointBorderColor: "#fff",
-                pointHoverBackgroundColor: "#fff",
-                pointHoverBorderColor: "rgba(255,99,132,1)",
-                data: [60, 80, 40, 19]
-            }]
-        }
-        var chartInstance = new Chart($("#radarChart"), {
-            type: 'radar',
-            data: data,
-            options: {
-                responsive: true,
-                responsiveAnimationDuration: 200,
-                maintainAspectRatio: true,
-                scale: {
-                    ticks: {
-                        fontSize: 15
-                    },
-                    pointLabels: {
-                        fontSize: 15
-                    }
-                },
-                legend: {
-                    labels: {
-                        fontSize: 15
-                    }
-                }
-            }
-        });
     }
 
     onTouchFooter(event) {

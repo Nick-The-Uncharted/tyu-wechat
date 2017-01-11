@@ -1,3 +1,9 @@
 img {
-    max-width: 100%
+    max-width: 100%;
+    max-height: 60vh; 
+}
+
+.logo-li {
+    display: flex;
+    justify-content: center
 }

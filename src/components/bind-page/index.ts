@@ -75,9 +75,7 @@ export default class BindPage extends Vue {
         this.startCountDown()
 
         $.post(`${config.serverAddress}/service/smsCode`, {
-            "phoneNumber": this.phoneNumber,
-            "smsCode": this.smsCode,
-            "wechatAuthCode": this.wechatAuthCode
+            "phoneNumber": this.phoneNumber
         })
             .done((data, textStaus, xhr: JQueryXHR) => {
                 console.log("验证码发送成功");
@@ -100,7 +98,7 @@ export default class BindPage extends Vue {
         })
             .done((data) => {
                 const {userId} = data
-                window.location.href = getWechatRedirectURL()
+                window.location.href = getWechatRedirectURL(`#/user/${userId}`)
             })
             .fail((xhr: JQueryXHR, textStatus) => {
                 this.showError(xhr.responseJSON.message)

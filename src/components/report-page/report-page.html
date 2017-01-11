@@ -8,10 +8,10 @@
         </header>
         <section :class="[m['full-width'], m['report-list']]">
             <ul>
-                <li :class="[m['radarChartLi']]">
-                    <canvas id="horizonBarChart"></canvas>
+                <li :class="[m['ChartLi']]">
+                    <canvas :id="chartId"></canvas>
                 </li>
-                <li>{{note}}</li>
+                <!--<li>{{note}}</li>-->
                 <li>{{summary}}</li>
             </ul>
         </section>
