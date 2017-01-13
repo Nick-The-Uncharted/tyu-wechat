@@ -12,10 +12,6 @@ const infoMap = require('../info-page/info-page.css')
 import Chart = require('chart.js')
 import InfoModel from '../../model/InfoModel'
 
-function secureURLWithUserId(userId: string) {
-    window.history.pushState("", "Title", `#/user/${userId}`);
-}
-
 @Component({
     template: template,
     props: {
@@ -25,7 +21,7 @@ function secureURLWithUserId(userId: string) {
             type: Boolean,
             default: true
         },
-        'userId': String
+        'childId': String
     }
 })
 export default class SummaryPage extends Vue {

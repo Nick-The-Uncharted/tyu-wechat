@@ -8,10 +8,6 @@ import 'fullpage.js/dist/jquery.fullpage.css'
 const arrowIconURL = require('../../assets/Arrow.png')
 const map = require('./evaluate-standard-table.css')
 
-function secureURLWithUserId(userId: string) {
-    window.history.pushState("", "Title", `#/user/${userId}`);
-}
-
 @Component({
     template: template,
     props: {

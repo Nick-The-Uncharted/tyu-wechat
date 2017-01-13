@@ -13,7 +13,7 @@ import getQueryParamByName from '../../tools/getQueryParamByName'
 import getWechatRedirectURL from '../../tools/getWechatRedirectURL'
 import '../../tools/jquery-animation'
 import InfoModel from '../../model/InfoModel'
-
+import {showLoading, dismissLoading} from '../../tools/loadingController'
 
 @Component({
     template: template,
@@ -36,9 +36,12 @@ export default class DashBoard extends Vue {
         ($('.modal') as any).modal();
         let bindedChildren
         try {
+            showLoading()
             bindedChildren = await InfoModel.getBindedChildren()
         } catch (error) {
             console.log(error)
+        } finally {
+            dismissLoading()
         }
         
         this.bindedChildren = bindedChildren
@@ -53,36 +56,30 @@ export default class DashBoard extends Vue {
 
     async addChildButtonTouched() {
         ($("#child-table-modal") as any).modal('open')
-        const newChildren = await InfoModel.getChildrenByName(this.newChildName)
+        let newChildren
+        try {
+            showLoading()
+            newChildren = await InfoModel.getChildrenByName(this.newChildName)
+        } catch(error) {
+            console.log(error)
+        } finally {
+            dismissLoading()
+        }
         this.newChildren = newChildren
     }
 
     async ensureAddChildButtonTouched() {
-        // try {
-        //     const result = await InfoModel.bindChild(this.childToAdd.id)
-        // } catch (error) {
-        //     console.log(error)
-        // }
-        InfoModel.bindChild(this.childToAdd.id).fail((jqXHR, textStatus, errorThrown) => {
-            console.log(errorThrown)
-        })
+        try {
+            const result = await InfoModel.bindChild(this.childToAdd.id)
+        } catch (error) {
+            console.log(error)
+        }
+        ($(".modal") as any).modal('close')
+        this.$router.push(`/childs/${this.childToAdd.id}`)
     }
 
     childClicked(child) {
         ($("#ensure-modal") as any).modal('open')
         this.childToAdd = child
-    }
-
-    submitButtonTouched(event: Event) {
-        $.post(`${config.serverAddress}/service/bindPhoneNumber`, {
-            
-        })
-            .done((data) => {
-                const {userId} = data
-                window.location.href = getWechatRedirectURL(`#/user/${userId}`)
-            })
-            .fail((xhr: JQueryXHR, textStatus) => {
-                this.showError(xhr.responseJSON.message)
-            })
     }
 }

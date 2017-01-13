@@ -97,8 +97,7 @@ export default class BindPage extends Vue {
             "wechatAuthCode": this.wechatAuthCode
         })
             .done((data) => {
-                const {userId} = data
-                window.location.href = getWechatRedirectURL(`#/user/${userId}`)
+                window.location.href = getWechatRedirectURL()
             })
             .fail((xhr: JQueryXHR, textStatus) => {
                 this.showError(xhr.responseJSON.message)

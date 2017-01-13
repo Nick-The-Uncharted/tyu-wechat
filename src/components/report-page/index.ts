@@ -13,9 +13,6 @@ import Chart = require('chart.js')
 
 import InfoModel from '../../model/InfoModel'
 
-function secureURLWithUserId(userId: string) {
-    window.history.pushState("", "Title", `#/user/${userId}`);
-}
 
 const translations = {
     PhysicalFunction: "身体机能",
@@ -33,7 +30,7 @@ const translations = {
             type: Boolean,
             default: true
         },
-        'userId': String,
+        'childId': String,
         'chartId': String
     }
 })

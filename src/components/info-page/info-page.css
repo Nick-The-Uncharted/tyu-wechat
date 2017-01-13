@@ -10,7 +10,7 @@ ul {
 
 li {
     border-radius: 5px;
-    background-color: #fff3e0;
+    background-color: #f1f8e9;
     list-style-type: none;
     padding: 2vh;
     margin-bottom: 3vh;
@@ -31,7 +31,7 @@ footer.custom {
 
 .background {
     position: fixed;
-    background: linear-gradient(#b2ff59, #ef6c00 );
+    background: #dce775;
     width: 100vw;
     height: 100vh;
     z-index: -1;

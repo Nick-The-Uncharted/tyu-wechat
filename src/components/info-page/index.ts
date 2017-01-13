@@ -21,7 +21,7 @@ import InfoModel from '../../model/InfoModel'
             type: Boolean,
             default: true
         },
-        'userId': String
+        'childId': String
     },
     components: {
         'evaluate-standard-table': EvaluateStandardTable,   
@@ -33,6 +33,7 @@ export default class InfoPage extends Vue {
     m = map
     name = "加载中……"
     gender = "加载中……"
+    kindergaren = "加载中……"
 
     onChartClick() {
         $('#fullpage').addClass('none-transform');
@@ -46,7 +47,6 @@ export default class InfoPage extends Vue {
             }
         });
 
-        console.log(1)
         let userInfo 
         try {
             userInfo = await InfoModel.getChildInfo((this as any).childId)
@@ -55,6 +55,8 @@ export default class InfoPage extends Vue {
         }
         this.name = userInfo.name
         this.gender = userInfo.gender
+        this.kindergaren = userInfo.kindergaren
+        document.title = `${this.name} 的健康报告`
 
         Chart.defaults.global.fontSize = 15
         const data = {
@@ -62,13 +64,13 @@ export default class InfoPage extends Vue {
             datasets: [
             {
                 label: `动商总分: ${userInfo.MQ}`,
-                backgroundColor: "rgba(255,99,132,0.2)",
-                borderColor: "rgba(255,99,132,1)",
-                pointBackgroundColor: "rgba(255,99,132,1)",
+                backgroundColor: "#dcedc8",
+                borderColor: "#9ccc65",
+                pointBackgroundColor: "#f9fbe7",
                 pointBorderColor: "#fff",
                 pointHoverBackgroundColor: "#fff",
-                pointHoverBorderColor: "rgba(255,99,132,1)",
-                data: userInfo.scores || []
+                pointHoverBorderColor: "#f9fbe7",
+                data: userInfo.scores || [20, 80 , 40 , 23]
             }]
         }
         var chartInstance = new Chart($("#overviewChart"), {

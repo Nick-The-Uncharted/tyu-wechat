@@ -14,10 +14,6 @@ const infoMap = require('../info-page/info-page.css')
 import EvaluateStandardTable from '../evaluate-standard-table'
 import Chart = require('chart.js')
 
-function secureURLWithUserId(userId: string) {
-    window.history.pushState("", "Title", `#/user/${userId}`);
-}
-
 @Component({
     template: template,
     props: {

@@ -1,10 +1,9 @@
 <div id="fullpage">
-    <info-page @footerTouched="nextSection" :childId="$route.params.id" :backgroundColor="{background: 'linear-gradient(#b2ff59, #ef6c00)'}"></info-page>
-    <report-page @footerTouched="nextSection" :childId="$route.params.id" chartId="report1" :backgroundColor="{background: 'linear-gradient(#ef6c00, #ffee58)'}" subject="PhysicalFunction"></report-page>
-    <report-page @footerTouched="nextSection" :childId="$route.params.id" chartId="report2" :backgroundColor="{background: 'linear-gradient(#ef6c00, #ffee58)'}" subject="GM"></report-page>
-    <report-page @footerTouched="nextSection" :childId="$route.params.id" chartId="report3" :backgroundColor="{background: 'linear-gradient(#ef6c00, #ffee58)'}" subject="SportsCognition"></report-page>
-    <report-page @footerTouched="nextSection" :childId="$route.params.id" chartId="report4" :backgroundColor="{background: 'linear-gradient(#ef6c00, #ffee58)'}" subject="FM"></report-page>
-    <summary-page @footerTouched="nextSection" :childId="$route.params.id" :backgroundColor="{background: 'linear-gradient(#ef6c00, #ffee58)'}"></summary-page>
-    <!--<info-page @footerTouched="nextSection" :childId="$router.params.id" :backgroundColor="{background: 'linear-gradient(#ffee58, #bcaaa4)'}" :shouldShowFooter=false></info-page>-->
-    <logo-page @footerTouched="nextSection" :childId="$route.params.id" :backgroundColor="{background: 'linear-gradient(#ef6c00, #ffee58)'}" :shouldShowFooter=false></logo-page>
+    <info-page @footerTouched="nextSection" :childId="$route.params.id"></info-page>
+    <report-page @footerTouched="nextSection" :childId="$route.params.id" chartId="report1" subject="PhysicalFunction"></report-page>
+    <report-page @footerTouched="nextSection" :childId="$route.params.id" chartId="report2" subject="GM"></report-page>
+    <report-page @footerTouched="nextSection" :childId="$route.params.id" chartId="report3" subject="SportsCognition"></report-page>
+    <report-page @footerTouched="nextSection" :childId="$route.params.id" chartId="report4" subject="FM"></report-page>
+    <summary-page @footerTouched="nextSection" :childId="$route.params.id"></summary-page>
+    <logo-page @footerTouched="nextSection" :childId="$route.params.id" :shouldShowFooter=false></logo-page>
 </div>

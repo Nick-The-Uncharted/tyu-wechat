@@ -23,11 +23,11 @@ import '!!vue-style!css!fullpage.js/dist/jquery.fullpage.css'
     }
 })
 export default class VerticalPager extends Vue {
+    mounted() {
+        $('#fullpage').fullpage()
+    }
+
     nextSection() {
         $.fn.fullpage.moveSectionDown();
     }
 }
-
-$(document).ready(function() {
-    $('#fullpage').fullpage()
-});

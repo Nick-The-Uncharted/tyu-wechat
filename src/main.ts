@@ -1,5 +1,6 @@
 // 防止toast的css冲突....
 import '!!vue-style!css?sourceMap!replace?regex=toast&flags=g&sub=material-toast!materialize-css/bin/materialize.css'
+import '!!vue-style!css?sourceMap!./vendor/whirl/whirl.css'
 import 'materialize-css/dist/js/materialize.js'
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
