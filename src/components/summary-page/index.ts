@@ -28,17 +28,23 @@ export default class SummaryPage extends Vue {
     arrowIconURL = arrowIconURL
     logoURL = logoURL
     m = Object.assign({}, infoMap, map)
+    lowDimensions = {"无": ["毫无缺点"]}
 
     async mounted() {
         let summary
         try {
-            summary = await InfoModel.getDimensionSummary((this as any).childId)
+            const result = await InfoModel.getDimensionSummary((this as any).childId)
+            summary = result.data.categories || []
+            this.lowDimensions = result.data.low_categories
         } catch (error) {
-
+            console.log(error)
         }
 
+        const labels = Object.keys(summary)
+        const scores = labels.map((key) => summary[key].score)
+
         const data = {
-            labels: summary.map((dimension) => dimension.name),
+            labels: labels,
             datasets: [
                 {
                     label: "维度总结",
@@ -48,7 +54,7 @@ export default class SummaryPage extends Vue {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "#f9fbe7",
-                    data: summary.map((dimension) => dimension.score)
+                    data: scores
                 }]
         }
 

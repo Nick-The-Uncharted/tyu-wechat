@@ -8,9 +8,13 @@
         </header>
         <section :class="m['full-width']">
             <form :class="m['input-form']">
-                <ul>
-                    <li v-for="bindedChild in bindedChildren">{{bindedChild.name}} ( {{bindedChild.kindergaren}} {{bindedChild.grade}} {{bindedChild.class}} )</li>
+                <ul v-if="bindedChildren.length > 0">
+                    <li v-for="bindedChild in bindedChildren" @click="viewChild(bindedChild)">{{bindedChild.name}} ( {{bindedChild.kindergaren}} {{bindedChild.grade}} {{bindedChild.class}} )</li>
                 </ul>
+                <ul v-else>
+                    <li>暂无绑定的孩子</li>
+                </ul>
+                
                 <div :class="[m['name-input-group']]">
                     <div id="phone-field" class="input-field custom">
                         <i class="material-icons prefix">account_circle</i>

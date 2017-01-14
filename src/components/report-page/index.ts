@@ -32,7 +32,8 @@ const cache = {}
         },
         'childId': String,
         'chartId': String,
-        'subject': Object
+        'subject': Object,
+        'subjectName': String
     }
 })
 export default class ReportPage extends Vue {
@@ -44,13 +45,21 @@ export default class ReportPage extends Vue {
         return (this as any).subject && (this as any).subject.summary || `计算中...`
     }
 
-    async updated() {
-        const subject = (this as any).subject
-        const subjectName = Object.keys(subject)[0]
-        const testSubject = subject[subjectName]
+    mounted() {
+        this.updateChart()
+    }
 
-        const labels = Object.keys(testSubject.scores) || []
-        const scores = labels.map((key) => testSubject.scores[key]) || []
+    updated() {
+        this.updateChart()
+    }
+
+    async updateChart() {
+        const testSubject = (this as any).subject
+        const subjectName = (this as any).subjectName
+
+        const labels = testSubject.scores.map((val) => val.name)
+        const scores = testSubject.scores.map((val) => val.score)
+
 
         const data = {
             labels: labels,

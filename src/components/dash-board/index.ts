@@ -38,6 +38,10 @@ export default class DashBoard extends Vue {
         try {
             showLoading()
             const result = await InfoModel.getBindedChildren()
+            if (result.code == 1) {
+                this.$router.push('/bind')
+                return
+            }
             bindedChildren = result.data.students
         } catch (error) {
             console.log(error)
@@ -46,6 +50,10 @@ export default class DashBoard extends Vue {
         }
         
         this.bindedChildren = bindedChildren
+    }
+
+    viewChild(child) {
+        this.$router.push(`/childs/${child.id}`)
     }
 
     showError(message: string) {
@@ -60,11 +68,11 @@ export default class DashBoard extends Vue {
             this.showError("姓名不能为空")
             return
         }
-        ($("#child-table-modal") as any).modal('open')
         let newChildren
         try {
             showLoading()
-            const result = await InfoModel.getChildrenByName(this.newChildName)
+            const result = await InfoModel.getChildrenByName(this.newChildName);
+            ($("#child-table-modal") as any).modal('open')
             newChildren = result.data.students
             if (newChildren.length == 0) {
                 ($("#child-table-modal") as any).modal('close')

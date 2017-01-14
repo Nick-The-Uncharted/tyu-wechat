@@ -1,4 +1,4 @@
-import {bindedChildrenEndPoint, bindPhoneNumberEndPoint, bindChildrenEndPoint, getChildrenByNameEndPoint, childInfoEndPointGetter, testSubjectDetailEndPointGetter, dimensionSubmmaryEndpointGetter} from '../constant/api'
+import {adviceEndpointGetter, bindedChildrenEndPoint, bindPhoneNumberEndPoint, bindChildrenEndPoint, getChildrenByNameEndPoint, childInfoEndPointGetter, testSubjectDetailEndPointGetter, dimensionSubmmaryEndpointGetter} from '../constant/api'
 
 export default class InfoModel {
     static getBindedChildren() {
@@ -40,5 +40,9 @@ export default class InfoModel {
 
     static getDimensionSummary(childId) {
         return $.ajax(dimensionSubmmaryEndpointGetter(childId))
+    }
+
+    static getAdvice(childId) {
+        return $.ajax(adviceEndpointGetter(childId))
     }
 }

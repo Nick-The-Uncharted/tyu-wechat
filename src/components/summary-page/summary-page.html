@@ -20,8 +20,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>平衡</td>
-                                <td>a、b、c</td>
+                                <template v-for="lowDimension, key in lowDimensions">
+                                    <td>{{key}}</td>
+                                    <td>{{lowDimension.join('、')}}</td>
+                                </template>
                             </tr>
                         </tbody>
                     </table>

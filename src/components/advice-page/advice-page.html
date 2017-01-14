@@ -1,0 +1,22 @@
+<div class="section no-padding">
+    <div :class="m['background']" :style="backgroundColor">
+        
+    </div>
+    <div :class="m['info-container']">
+        <header style="position: absolute">
+            <img :src="logoURL" :class="m['logo']" style="float: right" />
+        </header>
+        <section :class="[m['full-width'], m['info-list']]">
+            <ul>
+                <li style="text-align: center; font-size: 20px; color: #009688"><strong>膳食建议</strong></li>
+                <li>
+                    {{advice}}
+                </li>
+            </ul>
+        </section>
+
+        <footer @click.stop="onTouchFooter" v-if="shouldShowFooter" :class="[m['custom']]">
+            <img :src="arrowIconURL" :class="m['down-arrow']" class="animated infinite bounce"/>
+        </footer>
+    </div>
+</div>

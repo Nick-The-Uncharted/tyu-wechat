@@ -1,18 +1,18 @@
 import Vue = require('Vue')
 import Component from 'vue-class-component'
-const template: string = require('raw!./logo-page.html')
+const template: string = require('raw!./advice-page.html')
 
 import '!!vue-style!css!animate.css/animate.css'
 import 'fullpage.js/dist/jquery.fullpage.css'
 
 const arrowIconURL = require('../../assets/Arrow.png')
-const logoURL = require('../../assets/logo.png')
-const QRCodeURL = require('../../assets/QRCode.jpeg')
-const map = require('./logo-page.css')
+const map = require('./advice-page.css')
 const infoMap = require('../info-page/info-page.css')
+const logoURL = require('../../assets/logo.png')
 
 import EvaluateStandardTable from '../evaluate-standard-table'
 import Chart = require('chart.js')
+import InfoModel from '../../model/InfoModel'
 
 @Component({
     template: template,
@@ -21,30 +21,26 @@ import Chart = require('chart.js')
         'shouldShowFooter': {
             type: Boolean,
             default: true
-        }
+        },
+        'childId': String
     },
     components: {
         'evaluate-standard-table': EvaluateStandardTable,   
     }
 })
-export default class LogoPage extends Vue {
+export default class AdvicePage extends Vue {
     arrowIconURL = arrowIconURL
     logoURL = logoURL
-    QRCodeURL = QRCodeURL
     m = Object.assign({}, infoMap, map)
+    advice = "建议生成中..."
 
-
-    onChartClick() {
-        $('#fullpage').addClass('none-transform');
-        ($('.modal') as any).modal('open');
-    }
-
-    mounted() {
-        ($('.modal') as any).modal({
-            complete: () => {
-                $('#fullpage').removeClass('none-transform')
-            }
-        });
+    async mounted() {
+        try {
+            const result = await InfoModel.getAdvice((this as any).childId)
+            this.advice = result.data.advice
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     onTouchFooter(event) {
