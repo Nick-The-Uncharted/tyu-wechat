@@ -2,14 +2,14 @@
     <div :class="m['background']" :style="backgroundColorStyle">
         
     </div>
-    <div :class="m['info-container']">
+    <div :class="m['info-container']" style="justify-content: flex-start">
         <header>
             <img :src="logoURL" :class="m['logo']" style="float: right" />
         </header>
         <section :class="m['full-width']">
             <form :class="m['input-form']">
                 <ul>
-                    <li v-for="bindedChild in bindedChildren">{{bindedChild.name}} ( {{bindedChild.gender}} {{bindedChild.kindergaren}} {{bindedChild.grade}} {{bindedChild.class}} )</li>
+                    <li v-for="bindedChild in bindedChildren">{{bindedChild.name}} ( {{bindedChild.kindergaren}} {{bindedChild.grade}} {{bindedChild.class}} )</li>
                 </ul>
                 <div :class="[m['name-input-group']]">
                     <div id="phone-field" class="input-field custom">
@@ -22,7 +22,7 @@
             </form>
             <div id="child-table-modal" class="modal">
                   <ul class="collection">
-                        <li v-for="newChild in newChildren" class="collection-item" @click="childClicked(newChild)">{{newChild.name}} ( {{newChild.gender}} {{newChild.kindergaren}} {{newChild.grade}} {{newChild.class}} )</li>
+                        <li v-for="newChild in newChildren" class="collection-item" @click="childClicked(newChild)">{{newChild.name}} ( {{newChild.kindergaren}} {{newChild.grade}} {{newChild.class}} )</li>
                  </ul>
             </div>
 

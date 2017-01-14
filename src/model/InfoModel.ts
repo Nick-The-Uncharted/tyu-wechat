@@ -1,4 +1,4 @@
-import {bindedChildrenEndPoint, bindChildrenEndPoint, getChildrenByNameEndPoint, childInfoEndPointGetter, testSubjectDetailEndPointGetter, dimensionSubmmaryEndpointGetter} from '../constant/api'
+import {bindedChildrenEndPoint, bindPhoneNumberEndPoint, bindChildrenEndPoint, getChildrenByNameEndPoint, childInfoEndPointGetter, testSubjectDetailEndPointGetter, dimensionSubmmaryEndpointGetter} from '../constant/api'
 
 export default class InfoModel {
     static getBindedChildren() {
@@ -16,7 +16,17 @@ export default class InfoModel {
     static bindChild(childId) {
         return $.ajax(bindChildrenEndPoint, {
             method: 'POST',
-            data: {id: childId}
+            data: {studentID: childId}
+        })
+    }
+
+    static bindPhoneNumber(phoneNumber, smsCode) {
+        return $.ajax(bindPhoneNumberEndPoint, {
+            method: 'POST',
+            data: {
+                phoneNumber: phoneNumber,
+                smsCode: smsCode
+            }
         })
     }
 
@@ -24,8 +34,8 @@ export default class InfoModel {
         return $.ajax(childInfoEndPointGetter(childId))
     }
 
-    static getTestSubjectDetail(childId, subject) {
-        return $.ajax(testSubjectDetailEndPointGetter(childId, subject))
+    static getTestSubjectDetail(childId) {
+        return $.ajax(testSubjectDetailEndPointGetter(childId))
     }
 
     static getDimensionSummary(childId) {

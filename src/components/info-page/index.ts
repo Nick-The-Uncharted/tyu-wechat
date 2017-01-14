@@ -33,7 +33,7 @@ export default class InfoPage extends Vue {
     m = map
     name = "加载中……"
     gender = "加载中……"
-    kindergaren = "加载中……"
+    kindergarten = "加载中……"
 
     onChartClick() {
         $('#fullpage').addClass('none-transform');
@@ -49,28 +49,30 @@ export default class InfoPage extends Vue {
 
         let userInfo 
         try {
-            userInfo = await InfoModel.getChildInfo((this as any).childId)
+            const result = await InfoModel.getChildInfo((this as any).childId)
+            userInfo = result.data.student
         } catch (error) {
             console.log(error)
         }
         this.name = userInfo.name
-        this.gender = userInfo.gender
-        this.kindergaren = userInfo.kindergaren
+        this.kindergarten = userInfo.kindergarten
         document.title = `${this.name} 的健康报告`
 
+        const labels = Object.keys(userInfo.scores) ||  []
+        const scores = labels.map((val) => userInfo.scores[val])
         Chart.defaults.global.fontSize = 15
         const data = {
-            labels: ["身体机能", "粗大", "精细", "认知描述"],
+            labels: labels,
             datasets: [
             {
                 label: `动商总分: ${userInfo.MQ}`,
-                backgroundColor: "#dcedc8",
-                borderColor: "#9ccc65",
+                // backgroundColor: "#dcedc8",
+                borderColor: "#ffa726",
                 pointBackgroundColor: "#f9fbe7",
                 pointBorderColor: "#fff",
                 pointHoverBackgroundColor: "#fff",
                 pointHoverBorderColor: "#f9fbe7",
-                data: userInfo.scores || [20, 80 , 40 , 23]
+                data: scores || []
             }]
         }
         var chartInstance = new Chart($("#overviewChart"), {

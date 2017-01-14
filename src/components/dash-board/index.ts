@@ -7,6 +7,7 @@ import '!!vue-style!css!toastr/build/toastr.css'
 
 const template: string = require('raw!./dash-board.html')
 const map = require('./dash-board.css')
+const infoMap = require('../info-page/info-page.css')
 const logoURL = require('../../assets/logo.png')
 const config: any = require('../../../project-config.json')
 import getQueryParamByName from '../../tools/getQueryParamByName'
@@ -19,14 +20,13 @@ import {showLoading, dismissLoading} from '../../tools/loadingController'
     template: template,
     props: {
         'backgroundColorStyle': {
-            type: Object,
-            default: () => {return {background: 'linear-gradient(#b2ff59, #ef6c00)'}}
+            type: Object
         }
     }
 })
 export default class DashBoard extends Vue {
     logoURL = logoURL
-    m = map
+    m = Object.assign({}, infoMap, map)
     bindedChildren = []
     newChildName = ""
     newChildren = []
@@ -37,7 +37,8 @@ export default class DashBoard extends Vue {
         let bindedChildren
         try {
             showLoading()
-            bindedChildren = await InfoModel.getBindedChildren()
+            const result = await InfoModel.getBindedChildren()
+            bindedChildren = result.data.students
         } catch (error) {
             console.log(error)
         } finally {
@@ -55,11 +56,20 @@ export default class DashBoard extends Vue {
     }
 
     async addChildButtonTouched() {
+        if (!this.newChildName) {
+            this.showError("姓名不能为空")
+            return
+        }
         ($("#child-table-modal") as any).modal('open')
         let newChildren
         try {
             showLoading()
-            newChildren = await InfoModel.getChildrenByName(this.newChildName)
+            const result = await InfoModel.getChildrenByName(this.newChildName)
+            newChildren = result.data.students
+            if (newChildren.length == 0) {
+                ($("#child-table-modal") as any).modal('close')
+                alert(`没有查询到姓名为${this.newChildName}的孩子`)
+            }
         } catch(error) {
             console.log(error)
         } finally {
@@ -70,9 +80,12 @@ export default class DashBoard extends Vue {
 
     async ensureAddChildButtonTouched() {
         try {
+            showLoading()
             const result = await InfoModel.bindChild(this.childToAdd.id)
         } catch (error) {
             console.log(error)
+        } finally {
+            dismissLoading()
         }
         ($(".modal") as any).modal('close')
         this.$router.push(`/childs/${this.childToAdd.id}`)

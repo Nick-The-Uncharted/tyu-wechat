@@ -12,13 +12,13 @@ const config: any = require('../../../project-config.json')
 import getQueryParamByName from '../../tools/getQueryParamByName'
 import getWechatRedirectURL from '../../tools/getWechatRedirectURL'
 import '../../tools/jquery-animation'
+import InfoModel from '../../model/InfoModel'
 
 @Component({
     template: template,
     props: {
         'backgroundColorStyle': {
-            type: Object,
-            default: () => {return {background: 'linear-gradient(#b2ff59, #ef6c00)'}}
+            type: Object
         }
     }
 })
@@ -91,13 +91,9 @@ export default class BindPage extends Vue {
             return
         }
 
-        $.post(`${config.serverAddress}/service/bindPhoneNumber`, {
-            "phoneNumber": this.phoneNumber,
-            "smsCode": this.smsCode,
-            "wechatAuthCode": this.wechatAuthCode
-        })
+        InfoModel.bindPhoneNumber(this.phoneNumber, this.smsCode)
             .done((data) => {
-                window.location.href = getWechatRedirectURL()
+                this.$router.push(`/`)
             })
             .fail((xhr: JQueryXHR, textStatus) => {
                 this.showError(xhr.responseJSON.message)

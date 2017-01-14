@@ -37,19 +37,17 @@ export default class SummaryPage extends Vue {
 
         }
 
-        console.log(summary)
-
         const data = {
             labels: summary.map((dimension) => dimension.name),
             datasets: [
                 {
                     label: "维度总结",
-                    backgroundColor: "rgba(255,99,132,0.2)",
-                    borderColor: "rgba(255,99,132,1)",
-                    pointBackgroundColor: "rgba(255,99,132,1)",
+                    backgroundColor: "#e6ee9c",
+                    borderColor: "#e6ee9c",
+                    pointBackgroundColor: "#f9fbe7",
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(255,99,132,1)",
+                    pointHoverBorderColor: "#f9fbe7",
                     data: summary.map((dimension) => dimension.score)
                 }]
         }

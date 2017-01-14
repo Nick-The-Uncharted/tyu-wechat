@@ -14,7 +14,7 @@ import './style.css'
 Vue.use(VueRouter)
 
 let router = new VueRouter({ 
-  // mode: 'history',
+  mode: 'history',
   routes: [
     {
       path: '/bind',

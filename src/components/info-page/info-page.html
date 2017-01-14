@@ -9,10 +9,10 @@
         <section :class="[m['full-width'], m['info-list']]">
             <ul>
                 <li style="display: flex;">
-                    <span style="flex: 0.5">姓名: {{name}}</span>
-                    <span style="flex: 0.5">性别: {{gender}}</span>
+                    <span style="flex: 1">姓名&nbsp&nbsp&nbsp: {{name}}</span>
+                    <!--<span style="flex: 0.5">性别: {{gender}}</span>-->
                 </li>
-                <li>幼儿园: {{kindergaren}}</li>
+                <li>幼儿园: {{kindergarten}}</li>
                 <li :class="[m['ChartLi']]">
                     <canvas id="overviewChart"  @click="onChartClick"></canvas>
                 </li>

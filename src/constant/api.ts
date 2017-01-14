@@ -1,24 +1,28 @@
-const baseUrl = "http://localhost:3000/service"
+const config = require('../../project-config.json')
+
+const baseUrl = `${config.serverAddress}/service`
 export const bindEndpoint = `${baseUrl}/bindPhoneNumber`
 
-export const bindChildrenEndPoint = `${baseUrl}/bindChild`
+export const bindChildrenEndPoint = `${baseUrl}/reportUser/bindStudent`
 
-export const bindedChildrenEndPoint = `${baseUrl}/user/childs`
+export const bindPhoneNumberEndPoint = `${baseUrl}/reportUser/bindPhoneNumber`
 
-export const getChildrenByNameEndPoint = `${baseUrl}/childs`
+export const bindedChildrenEndPoint = `${baseUrl}/reportUser/searchStudentByOpenID`
+
+export const getChildrenByNameEndPoint = `${baseUrl}/reportUser/searchStudentByName`
 
 export const childInfoEndPointGetter = (childId) => {
-    return `${baseUrl}/childs/${childId}`
+    return `${baseUrl}/report/getStudentInfo?id=${childId}`
 }
 
-export const testSubjectDetailEndPointGetter = (childId, subjectName) => {
-    return `${baseUrl}/childs/${childId}/testSubject/${subjectName}`
+export const testSubjectDetailEndPointGetter = (childId) => {
+    return `${baseUrl}/report/getSubjectInfo?id=${childId}`
 }
 
 export const dimensionSubmmaryEndpointGetter = (childId) => {
-    return `${baseUrl}/childs/${childId}/dimensionSummary`
+    return `${baseUrl}/report/getCategoryInfo?id=${childId}`
 }
 
 export const adviceEndpointGetter = (childId) => {
-    return `${baseUrl}/childs/${childId}/advice`
+    return `${baseUrl}/report/getAdvice?id=${childId}`
 }

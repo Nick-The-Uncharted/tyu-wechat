@@ -11,7 +11,6 @@ const infoMap = require('../info-page/info-page.css')
 const map = require('./report-page.css')
 import Chart = require('chart.js')
 
-import InfoModel from '../../model/InfoModel'
 
 
 const translations = {
@@ -21,17 +20,19 @@ const translations = {
     FM: "精细"
 }
 
+const cache = {}
+
 @Component({
     template: template,
     props: {
-        'subject': String,
         'backgroundColor': Object ,
         'shouldShowFooter': {
             type: Boolean,
             default: true
         },
         'childId': String,
-        'chartId': String
+        'chartId': String,
+        'subject': Object
     }
 })
 export default class ReportPage extends Vue {
@@ -39,33 +40,33 @@ export default class ReportPage extends Vue {
     logoURL = logoURL
     m = Object.assign({}, infoMap, map)
     // note = "BMI 指数=体重/(身高)2，是目前国际上常用的衡量人体胖瘦程度以及是否健康的一个标准， 根据中国的 BMI 指数标准，最理想的 BMI 指数为 22。"
-    summary = `计算中...`
+    get summary() {
+        return (this as any).subject && (this as any).subject.summary || `计算中...`
+    }
 
-    async mounted() {
-        let testSubject
-        try {
-            testSubject = await InfoModel.getTestSubjectDetail((this as any).childId, (this as any).subject)
-        } catch (error) {
+    async updated() {
+        const subject = (this as any).subject
+        const subjectName = Object.keys(subject)[0]
+        const testSubject = subject[subjectName]
 
-        }
+        const labels = Object.keys(testSubject.scores) || []
+        const scores = labels.map((key) => testSubject.scores[key]) || []
 
         const data = {
-            labels: testSubject.list.map((item) => item.name) || [],
+            labels: labels,
             datasets: [
                 {
-                    label: translations[(<any>this).subject],
-                    backgroundColor: "rgba(255,99,132,0.2)",
-                    borderColor: "rgba(255,99,132,1)",
-                    pointBackgroundColor: "rgba(255,99,132,1)",
+                    label: subjectName,
+                    backgroundColor: "#e6ee9c",
+                    borderColor: "#e6ee9c",
+                    pointBackgroundColor: "#f9fbe7",
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(255,99,132,1)",
-                    data: testSubject.list.map((item) => item.score) || []
+                    pointHoverBorderColor: "#f9fbe7",
+                    data: scores
                 }]
         }
 
-
-        this.summary = testSubject.summary
 
         var myBarChart = new Chart($(`#${(this as any).chartId}`), {
             type: 'horizontalBar',
