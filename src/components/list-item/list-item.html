@@ -1,0 +1,10 @@
+<div :class="m['container']">
+    <div>
+        <div :class="m['index-span-container']" :style="{background: colors[index % colors.length]}">
+            <span :class="m['index-span']">{{index}}</span>
+        </div>
+    </div>
+    <div>
+        <p :class="m['content']"><strong>{{title}}:</strong>&nbsp{{content}}</p>
+    </div>
+</div>

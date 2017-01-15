@@ -2,21 +2,19 @@
     <div :class="m['background']" :style="backgroundColor">
         
     </div>
-    <div :class="m['report-container']">
+    <div :class="m['info-container']">
         <header style="position: absolute">
             <img :src="logoURL" :class="m['logo']" style="float: right" />
         </header>
-        <section :class="[m['full-width'], m['report-list']]">
+        <section :class="[m['full-width'], m['info-list']]">
             <ul>
-                <li :class="[m['ChartLi']]">
-                    <canvas :id="chartId"></canvas>
-                </li>
-                <!--<li>{{note}}</li>-->
+                <li style="text-align: center; font-size: 20px; color: #009688"><strong>生活实例</strong></li>
                 <li>
-                    <list-item v-for="(summary, key, index) in summarys" :title="key" :content="summary" :index="index + 1"/>
+                    <list-item v-for="(example, key, index) in examples" :title="key" :content="example" :index="index + 1"/>
                 </li>
             </ul>
         </section>
+
         <footer @click.stop="onTouchFooter" v-if="shouldShowFooter" :class="[m['custom']]">
             <img :src="arrowIconURL" :class="m['down-arrow']" class="animated infinite bounce"/>
         </footer>

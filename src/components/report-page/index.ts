@@ -10,7 +10,7 @@ const logoURL = require('../../assets/logo.png')
 const infoMap = require('../info-page/info-page.css')
 const map = require('./report-page.css')
 import Chart = require('chart.js')
-
+import ListItem from '../list-item'
 
 
 const translations = {
@@ -34,6 +34,9 @@ const cache = {}
         'chartId': String,
         'subject': Object,
         'subjectName': String
+    },
+    components: {
+        'list-item': ListItem,   
     }
 })
 export default class ReportPage extends Vue {
@@ -41,8 +44,8 @@ export default class ReportPage extends Vue {
     logoURL = logoURL
     m = Object.assign({}, infoMap, map)
     // note = "BMI 指数=体重/(身高)2，是目前国际上常用的衡量人体胖瘦程度以及是否健康的一个标准， 根据中国的 BMI 指数标准，最理想的 BMI 指数为 22。"
-    get summary() {
-        return (this as any).subject && (this as any).subject.summary || `计算中...`
+    get summarys() {
+        return (this as any).subject && (this as any).subject.summarys || {"1": "2", "3": "4"}
     }
 
     mounted() {
@@ -81,17 +84,9 @@ export default class ReportPage extends Vue {
             type: 'horizontalBar',
             data: data,
             options: {
-                responsive: true,
-                responsiveAnimationDuration: 200,
+                // responsive: true,
+                // responsiveAnimationDuration: 200,
                 maintainAspectRatio: true,
-                scale: {
-                    ticks: {
-                        fontSize: 15
-                    },
-                    pointLabels: {
-                        fontSize: 15
-                    }
-                },
                 scales: {
                     xAxes: [{
                         gridLines: {
@@ -101,6 +96,9 @@ export default class ReportPage extends Vue {
                     yAxes: [{
                         gridLines: {
                             display: false
+                        },
+                        ticks: {
+                            fontSize: 16
                         }
                     }]
                 },

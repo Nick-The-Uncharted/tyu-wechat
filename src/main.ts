@@ -10,6 +10,22 @@ import BindPage from './components/bind-page'
 import DashBoard from './components/dash-board'
 import VueRouter = require('vue-router')
 import './style.css'
+import Chart = require('chart.js')
+
+Chart.controllers.bar.prototype.drawLineAtY = function(value) {
+        const yScale = this.getScaleForId(this.getMeta().yAxisID)
+        const ctx = this.chart.chart.ctx
+        const y = yScale.getPixelForValue(value);
+
+        ctx.save();
+        ctx.strokeStyle = '#ff0000';
+        ctx.beginPath();
+        ctx.moveTo(this.getScaleForId(this.getMeta().xAxisID).left, y);
+        ctx.lineTo(this.chart.chart.width, y);
+        ctx.stroke();
+        ctx.restore();
+        return yScale.getPixelForValue(value);
+  }
 
 Vue.use(VueRouter)
 

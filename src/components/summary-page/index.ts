@@ -89,6 +89,11 @@ export default class SummaryPage extends Vue {
                     labels: {
                         fontSize: 15
                     }
+                },
+                animation: {
+                    onComplete: function() {
+                        myBarChart.getDatasetMeta(0).controller.drawLineAtY(2)
+                    }
                 }
             }
         });

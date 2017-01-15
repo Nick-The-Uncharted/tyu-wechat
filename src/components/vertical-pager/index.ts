@@ -8,6 +8,7 @@ import ReportPage from '../report-page'
 import SummaryPage from '../summary-page'
 import LogoPage from '../logo-page'
 import AdvicePage from '../advice-page/'
+import ExamplePage from '../example-page'
 const map = require('./vertical-pager.css')
 import InfoModel from '../../model/InfoModel'
 
@@ -22,7 +23,8 @@ import '!!vue-style!css!fullpage.js/dist/jquery.fullpage.css'
         'report-page': ReportPage,   
         'summary-page': SummaryPage,
         'logo-page': LogoPage,
-        'advice-page': AdvicePage
+        'advice-page': AdvicePage,
+        'example-page': ExamplePage
     }
 })
 export default class VerticalPager extends Vue {

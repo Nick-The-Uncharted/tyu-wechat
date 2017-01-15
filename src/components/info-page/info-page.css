@@ -77,5 +77,41 @@ canvas {
 
 .ChartLi {
     display: flex;
-    justify-content: center
+    justify-content: center;
+    height: calc(50vw + 4vh);
+}
+
+#score-div {
+    text-align: center;
+    font-size: 24px;
+    color: #43a047
+}
+
+#score-div p {
+    margin-bottom: 0
+}
+
+#score-div h3 {
+    margin-top: 0.3rem
+}
+
+#score-circle {
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+}
+
+.percent-div {
+    display: flex;
+}
+
+.percent-div > div {
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+    text-align: center
+}
+
+.percent-div > div > div.percent-sub-div {
+    flex: 0.5;
 }

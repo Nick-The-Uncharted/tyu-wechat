@@ -9,12 +9,34 @@
         <section :class="[m['full-width'], m['info-list']]">
             <ul>
                 <li style="display: flex;">
-                    <span style="flex: 1">姓名&nbsp&nbsp&nbsp: {{name}}</span>
+                    <span style="flex: 1">姓名&nbsp&nbsp&nbsp: {{userInfo.name}}</span>
                     <!--<span style="flex: 0.5">性别: {{gender}}</span>-->
                 </li>
-                <li>幼儿园: {{kindergarten}}</li>
+                <li>幼儿园: {{userInfo.kindergarten}}</li>
                 <li :class="[m['ChartLi']]">
-                    <canvas id="overviewChart"  @click="onChartClick"></canvas>
+                    <div :id="m['score-div']">
+                        <p>what</p>
+                        <h3>89</h3>
+                    </div>
+                    <div :id="m['score-circle']">
+                        
+                    </div>
+                </li>
+
+                <li :class="m['percent-div']">
+                    <div>
+                        <div :class="m['percent-sub-div']">
+                            <p style="margin-bottom: 0">全年级百分位</p>
+                            <p>80%</p>
+                        </div>
+                        <div style="background-color: #757575; width: 1px; align-self: center; height: 80%">
+                            
+                        </div>
+                        <div :class="m['percent-sub-div']">
+                            <p style="margin-bottom: 0">全班百分位</p>
+                            <p>80%</p>
+                        </div>
+                    </div>               
                 </li>
                   <!-- Modal Structure -->
                 <div id="standard-table-modal" class="modal">

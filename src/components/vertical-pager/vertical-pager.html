@@ -1,7 +1,8 @@
 <div id="fullpage">
     <info-page @footerTouched="nextSection" :childId="$route.params.id"></info-page>
-    <report-page v-for="(subject, key, index) in subjects" @footerTouched="nextSection" :childId="$route.params.id" :chartId="'report' + index" :subject="subject" :subjectName="key"></report-page>
     <summary-page @footerTouched="nextSection" :childId="$route.params.id"></summary-page>
-    <advice-page @footerTouched="nextSection" :childId="$route.params.id"></advice-page>
+    <example-page @footerTouched="nextSection" :childId="$route.params.id"/>
+    <report-page v-for="(subject, key, index) in subjects" @footerTouched="nextSection" :childId="$route.params.id" :chartId="'report' + index" :subject="subject" :subjectName="key"></report-page>
+    <!--<advice-page @footerTouched="nextSection" :childId="$route.params.id"></advice-page>-->
     <logo-page @footerTouched="nextSection" :childId="$route.params.id" :shouldShowFooter=false></logo-page>-->
 </div>
