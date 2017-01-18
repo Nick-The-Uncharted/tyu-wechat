@@ -28,7 +28,9 @@ export default class SummaryPage extends Vue {
     arrowIconURL = arrowIconURL
     logoURL = logoURL
     m = Object.assign({}, infoMap, map)
-    lowDimensions = {"无": ["毫无缺点"]}
+    lowDimensions = {"无": {
+                    subjects: ["毫无缺点"]
+                }}
 
     async mounted() {
         let summary
@@ -36,6 +38,11 @@ export default class SummaryPage extends Vue {
             const result = await InfoModel.getDimensionSummary((this as any).childId)
             summary = result.data.categories || []
             this.lowDimensions = result.data.low_categories
+            if (Object.keys(this.lowDimensions).length == 0) {
+                this.lowDimensions = {"无": {
+                    subjects: ["毫无缺点"]
+                }}
+            }
         } catch (error) {
             console.log(error)
         }
@@ -49,8 +56,8 @@ export default class SummaryPage extends Vue {
             datasets: [
                 {
                     label: "维度总结",
-                    backgroundColor: "#e6ee9c",
-                    borderColor: "#e6ee9c",
+                    // backgroundColor: "#e6ee9c",
+                    borderColor: '#ffcc80',
                     pointBackgroundColor: "#f9fbe7",
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
@@ -59,8 +66,8 @@ export default class SummaryPage extends Vue {
                 },
                 {
                     label: "平均值",
-                    backgroundColor: '#c5e1a5',
-                    borderColor: "#c5e1a5",
+                    // backgroundColor: '#c5e1a5',
+                    borderColor: '#81c784',
                     pointBackgroundColor: "#f9fbe7",
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
@@ -71,7 +78,7 @@ export default class SummaryPage extends Vue {
         }
 
         var myBarChart = new Chart($("#summaryChart"), {
-            type: 'bar',
+            type: 'radar',
             data: data,
             options: {
                 responsive: true,
@@ -79,27 +86,11 @@ export default class SummaryPage extends Vue {
                 maintainAspectRatio: true,
                 scale: {
                     ticks: {
-                        fontSize: 15
+                        display: false
                     },
                     pointLabels: {
-                        fontSize: 15
+                        display: false
                     }
-                },
-                scales: {
-                    xAxes: [{
-                        gridLines: {
-                            display: false
-                        }
-                    }],
-                    yAxes: [{
-                        gridLines: {
-                            display: false
-                        },
-                        scaleLabel: {
-                            display: true,
-                            labelString: "百分位（%）"
-                        }
-                    }]
                 },
                 legend: {
                     labels: {

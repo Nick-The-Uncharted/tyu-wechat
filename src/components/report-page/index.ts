@@ -11,6 +11,7 @@ const infoMap = require('../info-page/info-page.css')
 const map = require('./report-page.css')
 import Chart = require('chart.js')
 import ListItem from '../list-item'
+import ListItem2 from '../list-item-2'
 
 
 const translations = {
@@ -37,12 +38,14 @@ const cache = {}
     },
     components: {
         'list-item': ListItem,   
+        'list-item-2': ListItem2,   
     }
 })
 export default class ReportPage extends Vue {
     arrowIconURL = arrowIconURL
     logoURL = logoURL
     m = Object.assign({}, infoMap, map)
+    rate = ["偏弱", "一般", "优秀"]
     // note = "BMI 指数=体重/(身高)2，是目前国际上常用的衡量人体胖瘦程度以及是否健康的一个标准， 根据中国的 BMI 指数标准，最理想的 BMI 指数为 22。"
     get summarys() {
         return (this as any).subject && (this as any).subject.map((item) => item.review) || {"1": "2", "3": "4"}
@@ -68,7 +71,7 @@ export default class ReportPage extends Vue {
             labels: labels,
             datasets: [
                 {
-                    label: subjectName,
+                    label: "得分",
                     backgroundColor: "#e6ee9c",
                     borderColor: "#e6ee9c",
                     pointBackgroundColor: "#f9fbe7",
@@ -80,35 +83,44 @@ export default class ReportPage extends Vue {
         }
 
 
-        var myBarChart = new Chart($(`#${(this as any).chartId}`), {
-            type: 'horizontalBar',
-            data: data,
-            options: {
-                // responsive: true,
-                // responsiveAnimationDuration: 200,
-                maintainAspectRatio: true,
-                scales: {
-                    xAxes: [{
-                        gridLines: {
-                            display: false
-                        }
-                    }],
-                    yAxes: [{
-                        gridLines: {
-                            display: false
-                        },
-                        ticks: {
-                            fontSize: 14
-                        }
-                    }]
-                },
-                legend: {
-                    labels: {
-                        fontSize: 15
-                    }
-                }
-            }
-        });
+        // var myBarChart = new Chart($(`#${(this as any).chartId}`), {
+        //     type: 'horizontalBar',
+        //     data: data,
+        //     options: {
+        //         // responsive: true,
+        //         // responsiveAnimationDuration: 200,
+        //         maintainAspectRatio: true,
+        //         scales: {
+        //             xAxes: [{
+        //                 gridLines: {
+        //                     display: false
+        //                 },
+        //                 scaleLabel: {
+        //                     display: true,
+        //                     labelString: "得分(满分2分)"
+        //                 },
+        //                 ticks: {
+        //                     min: 0,
+        //                     max: 2
+        //                 }
+        //             }],
+        //             yAxes: [{
+        //                 gridLines: {
+        //                     display: false
+        //                 },
+        //                 ticks: {
+        //                     fontSize: 14,
+        //                 }
+        //             }]
+        //         },
+        //         legend: {
+        //             display: false,
+        //             labels: {
+        //                 fontSize: 15
+        //             }
+        //         }
+        //     }
+        // });
     }
 
     onTouchFooter(event) {

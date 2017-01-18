@@ -12,7 +12,9 @@ import ExamplePage from '../example-page'
 const map = require('./vertical-pager.css')
 import InfoModel from '../../model/InfoModel'
 
-import 'fullpage.js'
+require('fullpage.js/vendors/scrolloverflow.js')
+require('imports?IScroll=iscroll!fullpage.js')
+
 // 不启用css module
 import '!!vue-style!css!fullpage.js/dist/jquery.fullpage.css'
 
@@ -29,6 +31,8 @@ import '!!vue-style!css!fullpage.js/dist/jquery.fullpage.css'
 })
 export default class VerticalPager extends Vue {
     subjects = {}
+    isSummaryLoaded = false
+    isFullpageLoaded = false
 
     async mounted() {
         try {
@@ -41,7 +45,29 @@ export default class VerticalPager extends Vue {
 
     async updated() {
         // 必须放在这， 因为只有这时report page才已经放在了dom上
-        $('#fullpage').fullpage()
+        if (this.isSummaryLoaded && !this.isFullpageLoaded) {
+            console.log('loading fullpage because of update');
+            this.isFullpageLoaded = true
+            $('#fullpage').fullpage({
+                scrollOverflow: true
+            }) 
+        }
+    }
+
+    summaryLoaded() {
+        this.isSummaryLoaded = true
+        console.log('isSummaryLoaded');
+        
+        // 忽略race
+        if (!this.isFullpageLoaded) {
+            this.isFullpageLoaded = true
+            setTimeout(function() {
+               $('#fullpage').fullpage({
+                scrollOverflow: true,
+                scrollOverflowReset: true
+            } as any)  
+            }, 400);
+        }
     }
 
     nextSection() {

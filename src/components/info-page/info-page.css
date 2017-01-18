@@ -33,7 +33,7 @@ footer.custom {
     position: fixed;
     background: #dce775;
     width: 100vw;
-    height: 100vh;
+    height: 300vh;
     z-index: -1;
     display: block;
     /*filter: blur(8px)*/
@@ -78,7 +78,7 @@ canvas {
 .ChartLi {
     display: flex;
     justify-content: center;
-    height: calc(50vw + 4vh);
+    align-items: center;
 }
 
 #score-div {

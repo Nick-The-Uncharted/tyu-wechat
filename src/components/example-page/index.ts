@@ -33,7 +33,7 @@ export default class ExamplePage extends Vue {
     arrowIconURL = arrowIconURL
     logoURL = logoURL
     m = Object.assign({}, infoMap, map)
-    examples = {}
+    examples = {"无": {subjects: ["您的孩子非常优秀，没有弱项故不予显示"]}}
 
     async mounted() {
         try {
@@ -43,12 +43,19 @@ export default class ExamplePage extends Vue {
                 const result = await InfoModel.getDimensionSummary((this as any).childId)
                 const lowCategories = result && result.data && result.data.low_categories || []
                 this.examples = result.data.low_categories 
+                if (Object.keys(this.examples).length == 0) {
+                    this.examples = {"无": {subjects: ["您的孩子非常优秀，没有弱项故不予显示"]}}
+                }
             } catch (error) {
                 console.log(error)
             }
         } catch (error) {
             console.log(error)
         }
+    }
+
+    updated() {
+        this.$emit('summaryLoaded')
     }
 
     onTouchFooter(event) {

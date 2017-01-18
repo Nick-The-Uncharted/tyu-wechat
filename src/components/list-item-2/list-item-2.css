@@ -1,0 +1,22 @@
+
+.content-container .index-span-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background: red;
+    color: white;
+    position: relative;
+    top: 2px;
+}
+
+
+
+strong { font-weight: bold; }
+
+.content-container {
+    display: flex;
+    justify-content: space-between
+}

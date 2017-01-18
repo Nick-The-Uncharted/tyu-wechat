@@ -8,12 +8,15 @@
         </header>
         <section :class="[m['full-width'], m['report-list']]">
             <ul>
-                <li :class="[m['ChartLi']]">
+                <!--<li :class="[m['ChartLi']]">
                     <canvas :id="chartId"></canvas>
-                </li>
+                </li>-->
                 <!--<li>{{note}}</li>-->
                 <li>
-                    <list-item v-for="(summary, index) in summarys" :title="''" :content="summary" :index="index + 1"/>
+                    <template v-for="(item, index) in subject">
+                        <list-item-2 :title="item.title"  :index="item.score" :content="rate[item.score]"/>
+                        <p>{{item.review}}</p>
+                    </template>
                 </li>
             </ul>
         </section>
