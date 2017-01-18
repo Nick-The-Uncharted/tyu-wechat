@@ -41,7 +41,8 @@ export default class SummaryPage extends Vue {
         }
 
         const labels = Object.keys(summary)
-        const scores = labels.map((key) => summary[key].score)
+        const scores = labels.map((key) => summary[key].score_rate * 100)
+        const meanScores = labels.map((key) => summary[key].mean_rate * 100)
 
         const data = {
             labels: labels,
@@ -55,7 +56,18 @@ export default class SummaryPage extends Vue {
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "#f9fbe7",
                     data: scores
-                }]
+                },
+                {
+                    label: "平均值",
+                    backgroundColor: '#c5e1a5',
+                    borderColor: "#c5e1a5",
+                    pointBackgroundColor: "#f9fbe7",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "#f9fbe7",
+                    data: meanScores
+                },
+            ]
         }
 
         var myBarChart = new Chart($("#summaryChart"), {
@@ -82,6 +94,10 @@ export default class SummaryPage extends Vue {
                     yAxes: [{
                         gridLines: {
                             display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: "百分位（%）"
                         }
                     }]
                 },
@@ -92,7 +108,7 @@ export default class SummaryPage extends Vue {
                 },
                 animation: {
                     onComplete: function() {
-                        myBarChart.getDatasetMeta(0).controller.drawLineAtY(2)
+                        // myBarChart.getDatasetMeta(0).controller.drawLineAtY(2)
                     }
                 }
             }

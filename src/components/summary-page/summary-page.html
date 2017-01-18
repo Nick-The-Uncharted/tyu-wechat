@@ -19,11 +19,9 @@
                             <th>项目</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <template v-for="lowDimension, key in lowDimensions">
-                                    <td>{{key}}</td>
-                                    <td>{{lowDimension.join('、')}}</td>
-                                </template>
+                            <tr v-for="(lowDimension, key) in lowDimensions">
+                                <td>{{key}}</td>
+                                <td>{{(lowDimension.subjects || []).join('、')}}</td>
                             </tr>
                         </tbody>
                     </table>

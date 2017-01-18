@@ -61,7 +61,7 @@ export default class InfoPage extends Vue {
         document.title = `${this.userInfo.name} 的健康报告`
 
         var bar = new ProgressBar.Circle(`#${this.m['score-circle']}`, {
-            strokeWidth: 6,
+            strokeWidth: 3,
             easing: 'easeInOut',
             duration: 1400,
             color: '#43a047',
@@ -70,7 +70,7 @@ export default class InfoPage extends Vue {
             svgStyle: null
         });
 
-        bar.animate(userInfo.MQ / 100);  // Number from 0.0 to 1.0
+        bar.animate(userInfo.mq / 100);  // Number from 0.0 to 1.0
 
         // const labels = Object.keys(userInfo.scores) ||  []
         // const scores = labels.map((val) => userInfo.scores[val])

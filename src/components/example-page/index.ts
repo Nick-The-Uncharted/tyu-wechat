@@ -33,12 +33,19 @@ export default class ExamplePage extends Vue {
     arrowIconURL = arrowIconURL
     logoURL = logoURL
     m = Object.assign({}, infoMap, map)
-    examples = {"aaa": "bbb", "ccc": "ddd", "1": "2", "3": "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"}
+    examples = {}
 
     async mounted() {
         try {
             const result = await InfoModel.getAdvice((this as any).childId)
             // this.examples = {}
+            try {
+                const result = await InfoModel.getDimensionSummary((this as any).childId)
+                const lowCategories = result && result.data && result.data.low_categories || []
+                this.examples = result.data.low_categories 
+            } catch (error) {
+                console.log(error)
+            }
         } catch (error) {
             console.log(error)
         }

@@ -84,7 +84,9 @@ canvas {
 #score-div {
     text-align: center;
     font-size: 24px;
-    color: #43a047
+    color: #43a047;
+    position: absolute;
+    width: 50vw;
 }
 
 #score-div p {
@@ -96,7 +98,6 @@ canvas {
 }
 
 #score-circle {
-    position: absolute;
     width: 50vw;
     height: 50vw;
 }

@@ -32,7 +32,7 @@ const cache = {}
         },
         'childId': String,
         'chartId': String,
-        'subject': Object,
+        'subject': Array,
         'subjectName': String
     },
     components: {
@@ -45,7 +45,7 @@ export default class ReportPage extends Vue {
     m = Object.assign({}, infoMap, map)
     // note = "BMI 指数=体重/(身高)2，是目前国际上常用的衡量人体胖瘦程度以及是否健康的一个标准， 根据中国的 BMI 指数标准，最理想的 BMI 指数为 22。"
     get summarys() {
-        return (this as any).subject && (this as any).subject.summarys || {"1": "2", "3": "4"}
+        return (this as any).subject && (this as any).subject.map((item) => item.review) || {"1": "2", "3": "4"}
     }
 
     mounted() {
@@ -60,8 +60,8 @@ export default class ReportPage extends Vue {
         const testSubject = (this as any).subject
         const subjectName = (this as any).subjectName
 
-        const labels = testSubject.scores.map((val) => val.name)
-        const scores = testSubject.scores.map((val) => val.score)
+        const labels = testSubject.map((val) => val.title)
+        const scores = testSubject.map((val) => val.score)
 
 
         const data = {
@@ -98,7 +98,7 @@ export default class ReportPage extends Vue {
                             display: false
                         },
                         ticks: {
-                            fontSize: 16
+                            fontSize: 14
                         }
                     }]
                 },

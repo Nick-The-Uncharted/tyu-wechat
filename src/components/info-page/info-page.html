@@ -14,12 +14,11 @@
                 </li>
                 <li>幼儿园: {{userInfo.kindergarten}}</li>
                 <li :class="[m['ChartLi']]">
-                    <div :id="m['score-div']">
-                        <p>what</p>
-                        <h3>89</h3>
-                    </div>
                     <div :id="m['score-circle']">
-                        
+                        <div :id="m['score-div']">
+                            <p>{{userInfo.mq_title}}</p>
+                            <h3>{{userInfo.mq}}</h3>
+                        </div>
                     </div>
                 </li>
 
@@ -27,14 +26,14 @@
                     <div>
                         <div :class="m['percent-sub-div']">
                             <p style="margin-bottom: 0">全年级百分位</p>
-                            <p>80%</p>
+                            <p>{{Math.round(userInfo.grade_rate * 10000) / 100}}%</p>
                         </div>
                         <div style="background-color: #757575; width: 1px; align-self: center; height: 80%">
                             
                         </div>
                         <div :class="m['percent-sub-div']">
                             <p style="margin-bottom: 0">全班百分位</p>
-                            <p>80%</p>
+                            <p>{{Math.round(userInfo.class_rate * 10000) / 100}}%</p>
                         </div>
                     </div>               
                 </li>
