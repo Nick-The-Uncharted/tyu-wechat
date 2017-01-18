@@ -1,4 +1,4 @@
-import Vue = require('Vue')
+import Vue = require('vue')
 import Component from 'vue-class-component'
 const template: string = require('raw!./list-item-2.html')
 const map = require('./list-item-2.css')

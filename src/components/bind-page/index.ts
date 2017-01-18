@@ -1,4 +1,4 @@
-import Vue = require('Vue')
+import Vue = require('vue')
 import Component from 'vue-class-component'
 
 import toastr = require('toastr')

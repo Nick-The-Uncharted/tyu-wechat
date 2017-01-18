@@ -1,6 +1,6 @@
 /// <reference types="fullpage.js" />
 
-import Vue = require('Vue')
+import Vue = require('vue')
 import Component from 'vue-class-component'
 const template: string = require('raw!./vertical-pager.html')
 import InfoPage from '../info-page'
