@@ -58,7 +58,7 @@ export default class InfoPage extends Vue {
             console.log(error)
         }
         this.userInfo = userInfo
-        document.title = `${this.userInfo.name} 的健康报告`
+        document.title = `${this.userInfo.name} 的运动能力评估报告`
 
         var bar = new ProgressBar.Circle(`#${this.m['score-circle']}`, {
             strokeWidth: 3,
