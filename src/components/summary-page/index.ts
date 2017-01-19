@@ -51,6 +51,7 @@ export default class SummaryPage extends Vue {
         const scores = labels.map((key) => summary[key].score_rate * 100)
         const meanScores = labels.map((key) => summary[key].mean_rate * 100)
 
+
         const data = {
             labels: labels,
             datasets: [
@@ -86,7 +87,8 @@ export default class SummaryPage extends Vue {
                 maintainAspectRatio: true,
                 scale: {
                     ticks: {
-                        display: false
+                        display: false,
+                        min: 0
                     },
                     pointLabels: {
                         display: false
