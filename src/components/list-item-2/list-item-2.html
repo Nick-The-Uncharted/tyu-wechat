@@ -1,9 +1,9 @@
 <div :class="m['content-container']">
-        <strong style="flex: 0.33">{{title}}:</strong>
-        <div style="display: inline-block; flex: 0.33; display: flex; justify-content: center">
+        <strong style="flex: 0.45">{{title}}:</strong>
+        <div style="display: inline-block; flex: 0.1; display: flex; justify-content: center">
             <div :class="m['index-span-container']" :style="{background: colors[index % colors.length]}">
                 <span :class="m['index-span']">{{index}}</span>
             </div>
         </div>
-        <span style="flex: 0.33;text-align: right">{{content}}</span>
+        <span style="flex: 0.45;text-align: right">{{content}}</span>
 </div>

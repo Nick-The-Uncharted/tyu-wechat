@@ -22,7 +22,8 @@ const  ProgressBar = require('progressbar.js');
             type: Boolean,
             default: true
         },
-        'childId': String
+        'childId': String,
+        'dataResovler': Function
     },
     components: {
         'evaluate-standard-table': EvaluateStandardTable,   
@@ -53,7 +54,8 @@ export default class InfoPage extends Vue {
         let userInfo 
         try {
             const result = await InfoModel.getChildInfo((this as any).childId)
-            userInfo = result.data.student
+            userInfo = result.data.student;
+            (this as any).dataResovler()
         } catch (error) {
             console.log(error)
         }

@@ -21,7 +21,8 @@ import InfoModel from '../../model/InfoModel'
             type: Boolean,
             default: true
         },
-        'childId': String
+        'childId': String,
+        'dataResovler': Function
     }
 })
 export default class SummaryPage extends Vue {
@@ -36,7 +37,8 @@ export default class SummaryPage extends Vue {
         let summary
         try {
             const result = await InfoModel.getDimensionSummary((this as any).childId)
-            summary = result.data.categories || []
+            summary = result.data.categories || [];
+            (this as any).dataResovler()
             this.lowDimensions = result.data.low_categories
             if (Object.keys(this.lowDimensions).length == 0) {
                 this.lowDimensions = {"无": {

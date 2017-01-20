@@ -23,7 +23,8 @@ import ListItem from '../list-item'
             type: Boolean,
             default: true
         },
-        'childId': String
+        'childId': String,
+        'dataResovler': Function
     },
     components: {
         'list-item': ListItem,   
@@ -42,7 +43,8 @@ export default class ExamplePage extends Vue {
             try {
                 const result = await InfoModel.getDimensionSummary((this as any).childId)
                 const lowCategories = result && result.data && result.data.low_categories || []
-                this.examples = result.data.low_categories 
+                this.examples = result.data.low_categories;
+                (this as any).dataResovler()
                 if (Object.keys(this.examples).length == 0) {
                     this.examples = {"无": {subjects: ["您的孩子非常优秀，没有弱项故不予显示"]}}
                 }
@@ -52,10 +54,6 @@ export default class ExamplePage extends Vue {
         } catch (error) {
             console.log(error)
         }
-    }
-
-    updated() {
-        this.$emit('summaryLoaded')
     }
 
     onTouchFooter(event) {

@@ -31,44 +31,38 @@ import '!!vue-style!css!fullpage.js/dist/jquery.fullpage.css'
 })
 export default class VerticalPager extends Vue {
     subjects = {}
-    isSummaryLoaded = false
-    isFullpageLoaded = false
+    dataPromises = []
+    dataResovlers = []
 
-    async mounted() {
-        try {
-            const result = await InfoModel.getTestSubjectDetail(this.$route.params['id'])
-            this.subjects = result.data.subjects
-        } catch (error) {
-            console.log(error)
+    constructor() {
+        super()
+
+        for (let i = 0 ; i < 4 ; ++i) {
+            this.dataPromises.push(new Promise((resolve, reject) => {
+                this.dataResovlers.push(resolve)
+            }))
         }
-    }
 
-    async updated() {
-        // 必须放在这， 因为只有这时report page才已经放在了dom上
-        if (this.isSummaryLoaded && !this.isFullpageLoaded) {
-            console.log('loading fullpage because of update');
-            this.isFullpageLoaded = true
-            $('#fullpage').fullpage({
-                scrollOverflow: true
-            }) 
-        }
-    }
-
-    summaryLoaded() {
-        this.isSummaryLoaded = true
-        console.log('isSummaryLoaded');
-        
-        // 忽略race
-        if (!this.isFullpageLoaded) {
-            this.isFullpageLoaded = true
+        Promise.all(this.dataPromises).then(() => {
             setTimeout(function() {
                $('#fullpage').fullpage({
                 scrollOverflow: true,
                 scrollOverflowReset: true
             } as any)  
             }, 400);
+        })
+    }
+
+    async mounted() {
+        try {
+            const result = await InfoModel.getTestSubjectDetail(this.$route.params['id'])
+            this.subjects = result.data.subjects
+            this.dataResovlers[3]()
+        } catch (error) {
+            console.log(error)
         }
     }
+
 
     nextSection() {
         $.fn.fullpage.moveSectionDown();
