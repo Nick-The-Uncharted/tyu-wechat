@@ -33,7 +33,7 @@ footer.custom {
     position: fixed;
     background: #dce775;
     width: 100vw;
-    height: 300vh;
+    height: 1000vh;
     z-index: -1;
     display: block;
     /*filter: blur(8px)*/

@@ -34,7 +34,7 @@ export default class ExamplePage extends Vue {
     arrowIconURL = arrowIconURL
     logoURL = logoURL
     m = Object.assign({}, infoMap, map)
-    examples = {"无": {subjects: ["您的孩子非常优秀，没有弱项故不予显示"]}}
+    examples = {"无": {example: "您的孩子非常优秀，没有弱项故不予显示"}}
 
     async mounted() {
         try {
@@ -46,7 +46,7 @@ export default class ExamplePage extends Vue {
                 this.examples = result.data.low_categories;
                 (this as any).dataResovler()
                 if (Object.keys(this.examples).length == 0) {
-                    this.examples = {"无": {subjects: ["您的孩子非常优秀，没有弱项故不予显示"]}}
+                    this.examples = {"无": {example: "您的孩子非常优秀，没有弱项故不予显示"}}
                 }
             } catch (error) {
                 console.log(error)

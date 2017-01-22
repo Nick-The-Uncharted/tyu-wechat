@@ -16,6 +16,8 @@
                     <template v-for="(item, index) in subject">
                         <list-item-2 :title="item.title"  :index="item.score" :content="rate[item.score]"/>
                         <p>{{item.review}}</p>
+                        <p v-for="advice in item.advices">{{advice}}</p>
+                        <br />
                     </template>
                 </li>
             </ul>
