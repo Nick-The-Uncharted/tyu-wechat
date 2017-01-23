@@ -13,7 +13,7 @@
                     <!--<span style="flex: 0.5">性别: {{gender}}</span>-->
                 </li>
                 <li>幼儿园: {{userInfo.kindergarten}}</li>
-                <li :class="[m['ChartLi']]">
+                <li :class="[m['ChartLi']]" @click="onChartClick">
                     <div :id="m['score-circle']">
                         <div :id="m['score-div']">
                             <p>{{userInfo.mq_title}}</p>

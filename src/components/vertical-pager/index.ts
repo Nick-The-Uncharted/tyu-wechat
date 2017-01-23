@@ -13,7 +13,7 @@ const map = require('./vertical-pager.css')
 import InfoModel from '../../model/InfoModel'
 
 require('fullpage.js/vendors/scrolloverflow.js')
-require('imports?IScroll=iscroll!fullpage.js')
+require('imports?IScroll=iscroll!fullpage.js/dist/jquery.fullpage.extensions.min.js')
 
 // 不启用css module
 import '!!vue-style!css!fullpage.js/dist/jquery.fullpage.css'
@@ -45,10 +45,12 @@ export default class VerticalPager extends Vue {
 
         Promise.all(this.dataPromises).then(() => {
             setTimeout(function() {
-               $('#fullpage').fullpage({
-                scrollOverflow: true,
-                scrollOverflowReset: true
-            } as any)  
+                $.fn.fullpage.destroy && $.fn.fullpage.destroy('all');
+                $('#fullpage').fullpage({
+                    scrollOverflow: true,
+                    scrollOverflowReset: true
+                } as any)  
+                console.log($.fn.fullpage.destroy)
             }, 400);
         })
     }
