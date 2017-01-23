@@ -1,3 +1,7 @@
 :global(.none-transform) {
     transform: none !important
 }
+
+:global(.none-transform) * {
+    transform: none !important
+}
