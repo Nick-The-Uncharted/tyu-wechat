@@ -54,5 +54,5 @@ export default class EvaluateStandardTable extends Vue {
     percents1 = [3.4, 9, 49.4, 16.7, 11.6, 9.9]
     percents2 = [2.2, 9.5, 59.2, 18.1, 7.6, 3.4]
     percents3 = [1.2, 9.5, 56.6, 17.7, 10.5, 4.1]
-    types = ["健将", "达人", "良好", "正常", "中下", "偏弱", "较低"]
+    types = ["健将", "达人", "正常", "中下", "偏弱", "较低"]
 }
