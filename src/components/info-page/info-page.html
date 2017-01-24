@@ -25,21 +25,19 @@
                 <li :class="m['percent-div']">
                     <div>
                         <div :class="m['percent-sub-div']">
-                            <p style="margin-bottom: 0">全年级百分位</p>
-                            <p>{{Math.round((1 - userInfo.grade_rate) * 10000) / 100}}%</p>
+                            <p>超过了全年级 {{Math.round(userInfo.grade_rate * 10000) / 100}}% 的宝贝</p>
                         </div>
                         <div style="background-color: #757575; width: 1px; align-self: center; height: 80%">
                             
                         </div>
                         <div :class="m['percent-sub-div']">
-                            <p style="margin-bottom: 0">全班百分位</p>
-                            <p>{{Math.round((1 - userInfo.class_rate) * 10000) / 100}}%</p>
+                            <p>超过了全班 {{Math.round(userInfo.class_rate * 10000) / 100}}% 的宝贝</p>
                         </div>
                     </div>               
                 </li>
                   <!-- Modal Structure -->
                 <div id="standard-table-modal" class="modal">
-                    <evaluate-standard-table />
+                    <evaluate-standard-table :grade="userInfo.grade"/>
                 </div>
             </ul>
         </section>
